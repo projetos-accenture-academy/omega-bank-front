@@ -17,6 +17,31 @@
   border-width: 0 !important;
 }
 
+.active-link {
+  background-color: $accent !important;
+}
+
+.link-item-menu:active,
+.link-item-menu:focus {
+  outline: 0;
+  border: none;
+  -moz-outline-style: none;
+  outline-style: none;
+}
+/*
+.active-link .sidenav-item::after {
+  content: "";
+  display: inline-block;
+  margin-right: -15px;
+  vertical-align: middle;
+  width: 0;
+  height: 0;
+
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid white;
+}
+*/
 .sidenav-logo {
   font-family: $font-logo;
   font-size: 50px !important;
@@ -99,15 +124,7 @@
 }
 
 .sidenav-pinned {
-  width: 250px;
-}
-
-.content-pushed {
-  margin-left: 80px !important;
-}
-
-.content-unpushed {
-  margin-left: 80px !important;
+  width: $width-sidenav-with-labels;
 }
 
 @media only screen and (max-height: 460px) {

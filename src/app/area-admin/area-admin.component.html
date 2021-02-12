@@ -1,41 +1,40 @@
 <mat-sidenav-container class="container-sidenav">
-  <mat-sidenav [mode]="mode" #sidenav opened class="sidenav mat-elevation-z6 "
-    [ngClass]="menuPinned ? 'sidenav-pinned': ''">
+  <mat-sidenav [mode]="mode" #sidenav opened class="sidenav mat-elevation-z6 ">
     <div class="container text-center">
       <div class="row sidenav-item sidenav-logo">
         <div class="side-icon logo-icon">&#8486;</div>
         <div class="sidenav-item-label sidenav-logo-label">
-          Omega {{sidenav.opened}}
+          Omega
         </div>
-        <mat-icon class="side-icon-menu" (click)="menuIconClick()">menu</mat-icon>
+        <mat-icon class="side-icon-menu" hidden>menu</mat-icon>
       </div>
       <div class="row d-block">
-        <div class="col-12" matTooltip="Dados de cadastro e login" matTooltipPosition="right"
-          routerLinkActive="bg-light active-link">
+        <div class="col-12 link-item-menu" matTooltip="Dados de cadastro e login" matTooltipPosition="right"
+          routerLinkActive="bg-light active-link" routerLink="/meu-perfil">
           <div class="row sidenav-item">
             <mat-icon class="side-icon">account_circle
             </mat-icon>
-            <div class="sidenav-item-label" [ngClass]="menuPinned ? 'teste' : ''">
+            <div class="sidenav-item-label">
               Meus dados
             </div>
           </div>
         </div>
-        <div class="col-12 " matTooltip="Dashboard com resumos" matTooltipPosition="right"
-          routerLinkActive="bg-light active-link">
+        <div class="col-12 link-item-menu" matTooltip="Dashboard com resumos" matTooltipPosition="right"
+          routerLinkActive="bg-light active-link" routerLink="/dashboard">
           <div class="row sidenav-item">
             <mat-icon class="side-icon">dashboard</mat-icon>
             <div class="sidenav-item-label">Dashboard</div>
           </div>
         </div>
-        <div class="col-12" matTooltip="Extrato de lançamentos" matTooltipPosition="right"
+        <div class="col-12 link-item-menu" matTooltip="Extrato de lançamentos" matTooltipPosition="right"
           routerLinkActive="bg-light active-link">
           <div class="row sidenav-item">
             <mat-icon class="side-icon">summarize</mat-icon>
             <div class="sidenav-item-label">Extrato</div>
           </div>
         </div>
-        <div class="col-12" matTooltip="Planos de conta" matTooltipPosition="right"
-          routerLinkActive="bg-light active-link">
+        <div class="col-12 link-item-menu" matTooltip="Planos de conta" matTooltipPosition="right"
+          routerLinkActive="bg-light active-link" routerLink="/planos-conta">
           <div class="row sidenav-item">
             <mat-icon class="side-icon">category</mat-icon>
             <div class="sidenav-item-label">Planos de conta</div>
@@ -44,7 +43,7 @@
       </div>
     </div>
   </mat-sidenav>
-  <mat-sidenav-content [ngClass]="menuPinned ? 'content-pushed' : 'content-unpushed'">
-    <app-header-admin [title]="'Dashboard'"></app-header-admin>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
