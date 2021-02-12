@@ -1,8 +1,7 @@
-@import "../../css/variables.scss";
+@import "../../../css/variables.scss";
 
 .container-header {
   min-height: $min-height-header;
-  color: $accent !important;
   display: flex;
   align-items: center;
 
