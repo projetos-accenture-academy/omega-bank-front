@@ -7,12 +7,16 @@ import { AppComponent } from './app.component';
 import { AreaAdminModule } from './area-admin/area-admin.module';
 import { HomeComponent } from './home/home.component';
 import { Error404Component } from './error404/error404.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    Error404Component
+    Error404Component,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
