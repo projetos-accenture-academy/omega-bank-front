@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AreaAdminComponent } from './area-admin/area-admin.component';
-
 const routes: Routes = [
   {
-    path: 'admin',
-    component: AreaAdminComponent
+    path: '',
+    loadChildren: () => import('./area-admin/area-admin.module').then(m => m.AreaAdminModule)
   }
 ];
 
