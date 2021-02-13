@@ -7,13 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Error404Component } from './error404/error404.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
 import { getPaginatorIntl } from './paginator-intl';
-import { FooterComponent } from './shared/footer/footer.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { SignupComponent } from './signup/signup.component';
 
 
 registerLocaleData(localePT, 'pt');
@@ -21,12 +15,6 @@ registerLocaleData(localePT, 'pt');
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    Error404Component,
-    HeaderComponent,
-    FooterComponent,
-    LoginComponent,
-    SignupComponent
   ],
   imports: [
     BrowserModule,

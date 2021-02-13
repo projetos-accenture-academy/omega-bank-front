@@ -1,0 +1,50 @@
+
+<p>signup works!</p>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+
+        <div class="col-md-4 col-sm-5 col-xs-12 m-auto">
+            <img src="/img/signup.svg" class="img-fluid m-auto" width="100%" />
+        </div>
+
+        <div class="col-md-4 col-sm-5 col-xs-12 m-auto" style="background-color:#f0f0f0;border-radius:15px;">
+
+            <form class="mb-3" >
+                <div class="form-group">
+                    <label for="nome"  class="d-none d-sm-block">Nome completo:</label>
+                    <input type="text" class="form-control" id="name-input" aria-describedby="nome" placeholder="Insira seu nome completo..." required>
+                    
+                  </div>
+                  <div class="form-group">
+                    <label for="nome" class="d-none d-sm-block">CPF:</label>
+                    <input type="text" class="form-control" id="cpf" aria-describedby="cpf"  OnKeyPress="formatar('###.###.###-##', this)"  placeholder="Informe o seu cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required>
+                    
+                  </div>
+                <div class="form-group">
+                  <label for="email" class="d-none d-sm-block">Endereço de Email:</label>
+                  <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Digite aqui o seu email" required>
+                  <small id="emailHelp" class="form-text text-muted">Não compartilharemos sua informação com ninguém.</small>
+                </div>
+                <div class="form-group">
+                  <label for="senha" class="d-none d-sm-block">Senha:</label>
+                  <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" required>
+                </div>
+                <div class="form-group">
+                    <label for="senha" class="d-none d-sm-block">Senha:</label>
+                    <input type="password" class="form-control" id="senha1" placeholder="Repita a sua senha" required>
+                  </div>
+
+                <div class="form-check pt-3 ">
+                  <input type="checkbox" class="form-check-input" id="check" checked required>
+                  <label class="form-check-label" for="check">Concordo com os termos de serviço</label>
+                </div>
+                <button type="submit" class="btn btn-outline-primary mt-3 form-control"><b>Enviar cadastro</b></button>
+              </form>
+             
+             
+            </div>
+        </div>
+        
+    </div>
+</div>
