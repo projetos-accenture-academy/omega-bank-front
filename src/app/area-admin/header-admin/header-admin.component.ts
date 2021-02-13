@@ -8,10 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 export class HeaderAdminComponent implements OnInit {
 
   @Input() title: string | undefined;
+  nameUser: string | undefined;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.nameUser = "João";
+  }
+
+  doLogout() {
+    console.log("Saindo")
   }
 
 }

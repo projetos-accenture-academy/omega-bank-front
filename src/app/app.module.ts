@@ -1,6 +1,7 @@
 import { registerLocaleData } from '@angular/common';
 import localePT from '@angular/common/locales/pt';
 import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -9,10 +10,10 @@ import { AppComponent } from './app.component';
 import { Error404Component } from './error404/error404.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { getPaginatorIntl } from './paginator-intl';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SignupComponent } from './signup/signup.component';
-
 
 
 registerLocaleData(localePT, 'pt');
@@ -30,7 +31,7 @@ registerLocaleData(localePT, 'pt');
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule, MatPaginatorModule
   ],
   providers: [{
     provide: LOCALE_ID,
@@ -38,7 +39,7 @@ registerLocaleData(localePT, 'pt');
   }, {
     provide: DEFAULT_CURRENCY_CODE,
     useValue: 'BRL'
-  }],
+  }, { provide: MatPaginatorIntl, useValue: getPaginatorIntl() }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

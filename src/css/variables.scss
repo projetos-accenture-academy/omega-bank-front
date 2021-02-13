@@ -12,11 +12,14 @@ $accent: mat-color($app-accent, 800);
 $accent-hover: mat-color($app-accent, A700);
 $accent-light: mat-color($app-accent, 700);
 $warn: mat-color($app-warn);
-$font-logo: "Cinzel", Courier, monospace;
 $bgcolor-sidenav: #263238;
+
+// Fonts
+$font-family-logo: "Cinzel", "Roboto", serif !important;
 
 // Sizes
 $min-height-header: 50px;
 $padding-default: 15px;
 $width-sidenav-only-icons: 80px;
 $width-sidenav-with-labels: 250px;
+$border-radius-10: 10px;

@@ -19,4 +19,30 @@ h5,
 h6 {
   color: $accent;
   margin: 0 !important;
+  font-family: $font-family-logo;
+  text-transform: uppercase;
+  font-weight: 600 !important;
+}
+
+// wrapper para os containers iniciais de cada component
+.content-default-container {
+  padding: $padding-default;
+}
+
+/**
+CUSTOMIZAÇÕES QUE NÃO FUNCIONAM DIRETAMENTE NO CSS DOS COMPONENTES
+**/
+// Remover bug de scroll no sidenav dentro do módulo area-admin
+.area-admin .mat-drawer-inner-container {
+  overflow: hidden !important;
+}
+
+// Removendo div do carde na tela de extratos
+.header-balance .mat-card-header-text {
+  display: none !important;
+}
+
+// TEla
+.container-account .mat-select-value {
+  max-width: fit-content !important;
 }

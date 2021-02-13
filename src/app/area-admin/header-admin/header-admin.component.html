@@ -4,6 +4,15 @@
   </h1>
 
   <div class="welcome d-none d-sm-block">
-    Bem vindo, João.
+    <button mat-stroked-button color="primary" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <span>Olá, {{nameUser}}</span>
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="doLogout()">
+        <mat-icon>logout</mat-icon>
+        <span>Encerrar sessão</span>
+      </button>
+    </mat-menu>
   </div>
 </div>

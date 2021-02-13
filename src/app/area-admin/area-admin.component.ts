@@ -30,7 +30,7 @@ export class AreaAdminComponent implements OnInit {
     icon: 'account_circle'
   }, {
     title: 'Extratos',
-    routerLink: '#',
+    routerLink: 'extrato',
     tooltip: 'Extrato de lançamentos de contas',
     icon: 'summarize'
   }]

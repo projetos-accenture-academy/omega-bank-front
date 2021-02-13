@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AccountStatementsComponent } from './account-statements/account-statements.component';
 import { AreaAdminComponent } from './area-admin.component';
 import { CategoryRecordComponent } from './category-record/category-record.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -16,6 +17,10 @@ const routes: Routes = [
     path: '',
     component: AreaAdminComponent,
     children: [
+      {
+        path: 'extrato',
+        component: AccountStatementsComponent,
+      },
       {
         path: 'dashboard',
         component: DashboardComponent,

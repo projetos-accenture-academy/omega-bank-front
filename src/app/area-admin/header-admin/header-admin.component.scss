@@ -15,6 +15,16 @@
 }
 
 .welcome {
-  font-size: 1.4em !important;
+  font-size: 1.2em !important;
   padding-right: $padding-default;
+  color: $accent;
+
+  span {
+    font-size: 1.2em !important;
+  }
+
+  .mat-icon {
+    font-size: 1.8em !important;
+    height: fit-content !important;
+  }
 }

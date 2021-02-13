@@ -43,7 +43,7 @@
 }
 */
 .sidenav-logo {
-  font-family: $font-logo;
+  font-family: $font-family-logo;
   font-size: 50px !important;
   font-weight: 500;
   line-height: 0.9 !important;
@@ -57,7 +57,7 @@
 
 .sidenav-logo-label {
   font-size: 0.5em !important;
-  font-family: Roboto;
+  font-family: $font-family-logo;
 }
 
 .side-icon {
