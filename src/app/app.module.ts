@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { getPaginatorIntl } from './paginator-intl';
 
+import { NgxMaskModule } from 'ngx-mask'
 
 registerLocaleData(localePT, 'pt');
 
@@ -19,7 +20,14 @@ registerLocaleData(localePT, 'pt');
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule, MatPaginatorModule
+    BrowserAnimationsModule, 
+    MatPaginatorModule,
+    NgxMaskModule.forRoot(
+      {
+        dropSpecialCharacters: true //removes mask when saving
+      }
+    )
+
   ],
   providers: [{
     provide: LOCALE_ID,

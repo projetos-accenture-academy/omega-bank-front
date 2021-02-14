@@ -11,6 +11,7 @@ import { Error404Component } from './error404/error404.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 
+import { NgxMaskModule } from 'ngx-mask'
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SharedModule } from '../shared/shared.module';
     PublicAreaRoutingModule,
     FormsModule,
     SharedModule,
+    NgxMaskModule.forChild()
 
   ]
 })

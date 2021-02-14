@@ -12,16 +12,4 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  formatar(mascara: string, documento: string){
-    var i = documento.length;
-    var saida = mascara.substring(0,1);
-    var texto = mascara.substring(i)
-    
-    if (texto.substring(0,1) != saida){
-              documento += texto.substring(0,1);
-    }
-    return documento;
-    
-  }
-
 }
