@@ -1,45 +1,7 @@
 @import "../../../css/variables.scss";
 
-table {
-  width: 100%;
-}
-
-td,
-th {
-  width: 25%;
-}
-
 .container-account {
   margin-top: 30px;
-}
-
-.mat-form-field {
-  font-size: 1.1em;
-}
-
-.container-balance {
-  min-width: 150px;
-  background-color: $accent;
-  border-radius: $border-radius-10;
   display: flex;
-  align-items: center;
-  font-size: 18px;
-  height: fit-content;
-  margin-top: -40px;
-  min-width: min(250px, 40%);
-
-  .balance-value {
-    font-size: 1.2em;
-    padding: $padding-default;
-    font-weight: bold;
-    align-self: flex-end;
-  }
-
-  .balance-label {
-    align-self: flex-start;
-    font-size: 1.1em;
-    padding: $padding-default;
-    padding-bottom: 0 !important;
-    text-align: left;
-  }
+  flex-wrap: wrap;
 }

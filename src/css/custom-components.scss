@@ -24,6 +24,11 @@ h6 {
   font-weight: 600 !important;
 }
 
+// Override no background do modal do angular material (escurecendo um pouco mais)
+.cdk-overlay-dark-backdrop {
+  background: rgb(0, 0, 0, 0.82) !important;
+}
+
 // wrapper para os containers iniciais de cada component
 .content-default-container {
   padding: $padding-default;
