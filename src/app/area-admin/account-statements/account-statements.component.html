@@ -1,7 +1,28 @@
-<app-header-admin [title]="'Extratos'"></app-header-admin>
+<div style="height: 100%; flex-direction: column; display: flex;">
 
-<div class="content-default-container container-account justify-content-around">
-  <div *ngFor="let account of accountsStatements" class="col-sm-12 col-md-12 col-lg-6 mb-md-5">
-    <app-statements-list [accountWithStatements]="account" [interval]="interval"></app-statements-list>
+  <app-header-admin [title]="'Extratos'"></app-header-admin>
+
+  <div class="content-default-container container-account justify-content-around align-items-center">
+
+    <mat-spinner diameter="60" *ngIf="isLoadingAPI"></mat-spinner>
+
+    <div *ngIf="!isLoadingAPI && errorLoadingAPI" class="text-dark row justify-content-center align-items-center">
+      <!--"https://br.freepik.com/vetores/abstrat"-->
+      <img class="col-md-5" src="../../../assets/person_holding_phone.png" alt="No results found">
+      <div class="text-dark text-center col-md-5 justify-content-center align-items-center">
+        <p class="no-results">
+          Ops! Ocorreu algum erro e não conseguimos carregar seus extratos
+        </p>
+        <button mat-raised-button color="primary" (click)="getDataAPI()">
+          <mat-icon>refresh</mat-icon>
+          Tentar novamente
+        </button>
+      </div>
+    </div>
+    <div *ngFor="let account of accountsStatements"
+      class="col-sm-12 col-md-12 col-lg-6 mt-5 mt-md-0 mb-md-5 align-self-start">
+      <app-statements-list [accountWithStatements]="account" [interval]="interval"></app-statements-list>
+    </div>
   </div>
+
 </div>

@@ -17,6 +17,8 @@ export class AccountStatementsComponent {
 
   accountsStatements: AccountStatement[] = [];
   interval!: DataInterval;
+  isLoadingAPI: boolean = true;
+  errorLoadingAPI: boolean = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -26,18 +28,25 @@ export class AccountStatementsComponent {
   }
 
   ngOnInit() {
+    this.getDataAPI();
+  }
+
+  getDataAPI() {
+    this.errorLoadingAPI = false;
+    this.isLoadingAPI = true;
     this.statementsService.getUserAccountStatements().subscribe(
       result => {
         this.accountsStatements = result.accounts;
-        console.log("r = ", this.accountsStatements)
         this.getDataInterval();
+        this.isLoadingAPI = false;
+        this.errorLoadingAPI = false;
       },
       error => {
-        alert("Ocorreu um erro");
         this.accountsStatements = [];
+        this.errorLoadingAPI = true;
+        this.isLoadingAPI = false;
       }
     );
-
   }
 
   getDataInterval() {

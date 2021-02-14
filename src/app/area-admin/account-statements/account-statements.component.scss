@@ -4,4 +4,19 @@
   margin-top: 30px;
   display: flex;
   flex-wrap: wrap;
+  height: 100%;
+}
+
+.no-results {
+  line-height: 1.4;
+  font-size: 1.5em;
+  color: $accent;
+  padding: 15px;
+}
+
+.loading-result {
+  flex: 1;
+  flex-direction: column;
+  margin: 0 auto;
+  height: 100%;
 }
