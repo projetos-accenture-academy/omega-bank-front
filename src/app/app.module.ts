@@ -5,6 +5,8 @@ import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginato
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { getPaginatorIntl } from './paginator-intl';
@@ -22,6 +24,7 @@ registerLocaleData(localePT, 'pt');
     AppRoutingModule,
     BrowserAnimationsModule, 
     MatPaginatorModule,
+    HttpClientModule,
     NgxMaskModule.forRoot(
       {
         dropSpecialCharacters: true //removes mask when saving

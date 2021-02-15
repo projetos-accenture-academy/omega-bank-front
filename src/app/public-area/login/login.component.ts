@@ -5,8 +5,8 @@ import { NgForm } from '@angular/forms';
 
 //TODO: Ajustar todos os comentários!
 
-//import { LoginResponse } from './login.interfaces';
-//import { LoginService } from './login.service';
+import { LoginResponse } from './login.interfaces';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -16,33 +16,35 @@ import { NgForm } from '@angular/forms';
 export class LoginComponent {
 
   
-  @ViewChild('username-input') username: ElementRef | undefined;
-  @ViewChild('password-input') pw: ElementRef | undefined;
+  @ViewChild('username-input') usernameInput: ElementRef | undefined;
+  @ViewChild('password-input') pwInput: ElementRef | undefined;
 
-  usuario: string = '';
-  senha: string = '';
+  username: string = '';
+  pw: string = '';
 
   isLoading: boolean = false;
   loginError: boolean = false;
+  loginErrorMessage: String = "Erro: Login ou senha incorretos";
 
   constructor(
-    //private loginService: LoginService,
+    private loginService: LoginService,
     private router: Router
   ) { }
 
-  onSubmit(form: NgForm) {
+  onLoginButtonSubmit(form: NgForm) {
+
     this.loginError = false;
     
     if (!form.valid) {
-      form.controls.usuario.markAsTouched();
-      form.controls.senha.markAsTouched();
+      form.controls.username.markAsTouched();
+      form.controls.pw.markAsTouched();
 
-      if (form.controls.usuario.invalid) {
-        this.username?.nativeElement.focus();
+      if (form.controls.username.invalid) {
+        this.usernameInput?.nativeElement.focus();
       }
 
-      if (form.controls.senha.invalid) {
-        this.pw?.nativeElement.focus();
+      if (form.controls.pw.invalid) {
+        this.pwInput?.nativeElement.focus();
       }
 
       return;
@@ -61,28 +63,29 @@ export class LoginComponent {
 
   login() {
     this.isLoading = true;
+    console.log("Entrou na 2 login");
 
     const credenciais = {
-      usuario: this.usuario,
-      senha: this.senha
+      usuario: this.username,
+      senha: this.pw
     };
     
-    /*
     this.loginService.logar(credenciais)
       .subscribe(
         response => this.onSuccessLogin(response),
         error => this.onErrorLogin(error)
       );
-      */
+      
   }
 
-  /*
+  
   onSuccessLogin(response: LoginResponse) {
-    this.router.navigate(['dashboard']);
+    this.router.navigate(['admin']);
   }
-  */
+  
 
   onErrorLogin(error: any) {
+    console.log("Error logging in");
     this.loginError = true;
     this.isLoading = false;
   }
