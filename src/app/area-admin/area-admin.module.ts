@@ -15,10 +15,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
+import { AccountPlansFormComponent } from './account-plans/account-plans-form/account-plans-form.component';
 import { AccountPlansComponent } from './account-plans/account-plans.component';
 import { AccountStatementsComponent } from './account-statements/account-statements.component';
 import { StatementsFilterComponent } from './account-statements/statements-filter/statements-filter.component';
@@ -28,7 +30,6 @@ import { AreaAdminComponent } from './area-admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderAdminComponent } from './header-admin/header-admin.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { AccountPlansFormComponent } from './account-plans/account-plans-form/account-plans-form.component';
 
 
 
@@ -53,6 +54,7 @@ import { AccountPlansFormComponent } from './account-plans/account-plans-form/ac
     MatTableModule,
     MatInputModule,
     MatDatepickerModule,
+    MatSnackBarModule,
     MatProgressSpinnerModule,
     FormsModule,
     AreaAdminRoutingModule,

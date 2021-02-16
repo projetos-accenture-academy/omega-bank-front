@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
 
-import { AccountPlanData } from '../account-plans.interface';
+import { AccountPlanData, AccountPlanNewData } from '../account-plans.interface';
 import { AccountPlansService } from '../account-plans.service';
 
 @Component({
@@ -17,7 +19,11 @@ export class AccountPlansFormComponent implements OnInit {
     Validators.required,
   ]);
 
-  constructor(public dialogRef: MatDialogRef<AccountPlansFormComponent>, private planService: AccountPlansService) { }
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: AccountPlanData,
+    private snackBar: MatSnackBar,
+    public dialogRef: MatDialogRef<AccountPlansFormComponent>,
+    private planService: AccountPlansService) { }
 
   ngOnInit(): void {
   }
@@ -28,10 +34,33 @@ export class AccountPlansFormComponent implements OnInit {
 
   onSubmitData() {
 
-    // TODO: VALIDAR ANTES DO SUBMI
-    //this.planService.posAccountPlan(this.nameFormControl.value);
-    this.dialogRef.close(true);
+    const accountPlan: AccountPlanNewData = { description: this.nameFormControl.value };
+    let observalbePlan: Observable<AccountPlanNewData>;
+
+    if (this.data.id) {
+      observalbePlan = this.planService.putAccountPlan(this.data);
+    } else {
+      observalbePlan = this.planService.postAccountPlan(accountPlan);
+    }
+
+    observalbePlan.subscribe(
+      result => {
+        this.openSnackBar("Plano de contas salvo com sucesso", "Fechar");
+        this.dialogRef.close(result);
+      },
+      error => {
+        this.openSnackBar("Não foi possível salvar o noco plano de contas", "Fechar");
+        this.dialogRef.close(null);
+      }
+    );
+
 
   }
 
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 4000,
+    });
+  }
 }

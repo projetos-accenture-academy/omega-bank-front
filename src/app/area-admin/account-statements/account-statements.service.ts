@@ -15,8 +15,8 @@ export class AccountStatementsService {
     private http: HttpClient
   ) { }
 
-  getUserAccountStatements(params: string = ""): Observable<UserAccountData> {
-
-    return this.http.get<UserAccountData>(this.API_URL + "data" + params);
+  getUserAccountStatements(initialDate: string = "''", finalDate: string = "''", user: string = "''"): Observable<UserAccountData> {
+    const range = `?dataInicial=${initialDate}&dataFinal=${finalDate}&user=${user}`;
+    return this.http.get<UserAccountData>(this.API_URL + "data" + range);
   }
 }

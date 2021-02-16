@@ -3,8 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { timer } from 'rxjs';
-import { take } from 'rxjs/operators';
 
 import { AccountPlansFormComponent } from './account-plans-form/account-plans-form.component';
 import { AccountPlanData } from './account-plans.interface';
@@ -21,25 +19,35 @@ import { AccountPlansService } from './account-plans.service';
 
 })
 export class AccountPlansComponent implements OnInit {
-  displayedColumns: string[] = ['description'];
+  displayedColumns: string[] = ['description', 'tools'];
   dataSource!: MatTableDataSource<AccountPlanData>;
 
   isLoadingResult: boolean = true;
   errorLoadingAPI: boolean = false;
   accountPlans: AccountPlanData[] = [];
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator, { static: false })
+  set paginator(value: MatPaginator) {
+    if (this.dataSource) {
+      this.dataSource.paginator = value;
+    }
+  }
+
+  @ViewChild(MatSort, { static: false })
+  set sort(value: MatSort) {
+    if (this.dataSource) {
+      this.dataSource.sort = value;
+    }
+  }
 
   constructor(private plansService: AccountPlansService, public dialogForm: MatDialog) {
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource();
+    this.dataSource = new MatTableDataSource<AccountPlanData>();
   }
 
   ngOnInit() {
     this.getDataAPI();
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(this.accountPlans);
+
   }
 
   ngAfterViewInit() {
@@ -63,29 +71,47 @@ export class AccountPlansComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialogForm.open(AccountPlansFormComponent, {
+      data: { id: null, description: '' },
       width: '450px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
+      if (result) {
+        this.accountPlans.push(result)
+        this.dataSource.data = this.accountPlans;
+      }
+
     });
   }
 
-  async getDataAPI() {
+  editAccountPlan(data: AccountPlanData) {
+    const dialogRef = this.dialogForm.open(AccountPlansFormComponent, {
+      data,
+      width: '450px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log(result);
+      }
+
+    });
+  }
+
+  getDataAPI() {
     this.isLoadingResult = true;
 
-    await timer(1000).pipe(take(1)).toPromise();
-    this.plansService.getUserAccountPlans().subscribe(
+    this.plansService.getAccountPlans().subscribe(
       result => {
         this.accountPlans = result
         this.isLoadingResult = false
         this.errorLoadingAPI = false
 
-        this.dataSource = new MatTableDataSource(this.accountPlans);
+        this.dataSource.data = this.accountPlans;
       },
       error => {
-        alert("Ocorreu um erro na requisição");
         this.isLoadingResult = false
+        this.errorLoadingAPI = true
       }
     );
   }

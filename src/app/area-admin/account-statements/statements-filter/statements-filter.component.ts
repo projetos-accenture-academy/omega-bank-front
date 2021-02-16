@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -9,8 +9,12 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class StatementsFilterComponent implements OnInit {
 
   range = new FormGroup({
-    start: new FormControl(),
-    end: new FormControl()
+    start: new FormControl('', [
+      Validators.required,
+    ]),
+    end: new FormControl('', [
+      Validators.required,
+    ])
   });
 
   constructor(
@@ -27,7 +31,6 @@ export class StatementsFilterComponent implements OnInit {
 
 
   onSubmit() {
-
     this.dialogRef.close(this.range.value);
   }
 }

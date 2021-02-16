@@ -45,8 +45,10 @@ export class StatementsListComponent implements OnInit {
     this.endDate = this.interval.end;
 
     this.statementData = this.accountWithStatements.statements;
+
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.statementData);
+
     this.isLoadingResult = false;
   }
 
@@ -74,7 +76,7 @@ export class StatementsListComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(StatementsFilterComponent, {
-      width: "450px"
+      width: "450px",
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -92,8 +94,6 @@ export class StatementsListComponent implements OnInit {
     await timer(1000).pipe(take(1)).toPromise();
     this.statementsService.getUserAccountStatements().subscribe(
       result => {
-        //this.statements = result.accounts.;
-        console.log("TESTE")
         this.isLoadingResult = false
       },
       error => {

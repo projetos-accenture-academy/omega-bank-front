@@ -10,14 +10,17 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-date-range-picker #picker></mat-date-range-picker>
 
-      <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Data inicial inválida</mat-error>
-      <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Data final inváida</mat-error>
+      <mat-error *ngIf="range.controls.start.hasError('required')">Data inicial é <strong>obrigatória</strong>
+      </mat-error>
+      <mat-error *ngIf="range.controls.end.hasError('required')">Data final é <strong>obrigatória</strong></mat-error>
+      <mat-error *ngIf="range.controls.end.hasError('pattern')">ERO <strong>obrigatória</strong></mat-error>
+
     </mat-form-field>
   </div>
   <div mat-dialog-actions class="justify-content-end">
     <button mat-button (click)="onCancel()">Cancelar</button>
     <button mat-button color="accent" [mat-dialog-close]="range.value" cdkFocusInitial
-      [disabled]="range.controls.end.hasError('matEndDateInvalid')">
+      [disabled]="range.controls.end.hasError('required')">
       Aplicar filtro
     </button>
   </div>

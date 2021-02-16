@@ -24,6 +24,10 @@ h6 {
 
 .mat-dialog-title {
   font-size: 1.5em !important;
+  padding: $padding-default;
+  display: block;
+  background-color: $accent;
+  margin-bottom: 20px !important;
 }
 
 // wrapper para os containers iniciais de cada component

@@ -2,10 +2,6 @@
 
 $margin-top-card-elevated: -40px;
 
-.mat-form-field {
-  font-size: 1.1em;
-}
-
 table {
   width: 100%;
 }
@@ -22,6 +18,15 @@ mat-card-header,
   padding-right: $padding-default !important;
 }
 
+.content-account-plans .mat-card-header-text {
+  align-self: center !important;
+  margin-left: 0 !important;
+}
+
+.content-account-plans mat-card-title {
+  margin: 0 !important;
+}
+
 .content-account-plans .search-local-input {
   width: 100%;
 }
@@ -29,3 +34,32 @@ mat-card-header,
 mat-card-content {
   margin-bottom: 0 !important;
 }
+
+.edit-icon {
+  cursor: pointer;
+}
+
+.mat-form-field {
+  font-size: 1.1em;
+}
+
+@mixin mat-table-columns($columns) {
+  .mat-column- {
+    @each $colName, $props in $columns {
+      $width: map-get($props, "width");
+
+      &#{$colName} {
+        text-align: end;
+        width: $width;
+      }
+    }
+  }
+}
+
+@include mat-table-columns(
+  (
+    tools: (
+      width: 65px,
+    ),
+  )
+);
