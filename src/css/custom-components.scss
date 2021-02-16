@@ -1,14 +1,6 @@
 @import "./variables.scss";
 
 /**
- Button Angular Material
- https://material.angular.io/components/button/examples
-**/
-.mat-button-base:not(.mat-fab) {
-  border-radius: 10px !important;
-}
-
-/**
 HTML Elements
 **/
 h1,
@@ -17,16 +9,34 @@ h3,
 h4,
 h5,
 h6 {
-  color: $accent;
-  margin: 0 !important;
-  font-family: $font-family-logo;
-  text-transform: uppercase;
+  /*Comentei para add no header diretamente, estava influenciando em componentes do angular material*/
+  /*color: $accent;
   font-weight: 600 !important;
+  font-family: $font-family-logo;
+  margin: 0 !important;
+  text-transform: uppercase;*/
+}
+
+// Override no background do modal do angular material (escurecendo um pouco mais)
+.cdk-overlay-dark-backdrop {
+  background: rgb(0, 0, 0, 0.82) !important;
+}
+
+.mat-dialog-title {
+  font-size: 1.5em !important;
+  padding: $padding-default;
+  display: block;
+  background-color: $accent;
+  margin-bottom: 20px !important;
 }
 
 // wrapper para os containers iniciais de cada component
 .content-default-container {
   padding: $padding-default;
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
 }
 
 /**

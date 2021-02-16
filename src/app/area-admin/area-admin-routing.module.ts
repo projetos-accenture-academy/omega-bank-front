@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AccountPlansComponent } from './account-plans/account-plans.component';
 import { AccountStatementsComponent } from './account-statements/account-statements.component';
 import { AreaAdminComponent } from './area-admin.component';
-import { CategoryRecordComponent } from './category-record/category-record.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
@@ -27,7 +27,7 @@ const routes: Routes = [
       },
       {
         path: 'planos-conta',
-        component: CategoryRecordComponent,
+        component: AccountPlansComponent,
       },
       {
         path: 'meu-perfil',
