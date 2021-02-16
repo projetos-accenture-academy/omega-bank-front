@@ -90,6 +90,8 @@ table {
     padding: $padding-default;
     padding-bottom: 0 !important;
     text-align: left;
+    display: flex;
+    align-items: center;
   }
 }
 

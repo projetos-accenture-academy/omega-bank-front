@@ -73,7 +73,9 @@ export class StatementsListComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(StatementsFilterComponent);
+    const dialogRef = this.dialog.open(StatementsFilterComponent, {
+      width: "450px"
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       this.startDate = result.start;

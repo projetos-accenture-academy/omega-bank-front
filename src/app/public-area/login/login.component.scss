@@ -1,0 +1,79 @@
+/*------------ Global ------------*/
+
+  
+  * {
+    font-family: "Roboto", sans-serif;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0 !important;
+    color: #003586 !important;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  p
+  {
+      font-weight: 400;
+  }
+  
+  
+  /*------------ IDs ------------*/
+  
+  #btn-login {
+    background-color:#003586; 
+    border:#003586; 
+    border-radius: 8px;
+    color: #fff;
+    opacity:0.92;
+    padding: 6px;
+    width: 18%;  
+  }
+  
+  #btn-login:hover {
+    opacity:1;
+  } 
+  
+
+  
+  #login-error-warning
+  {
+    color: red;
+  }
+  
+  
+  /*------------ Classes ------------*/
+  
+  .btn-container {
+    padding-top: 12px;
+    text-align: center;
+  }     
+  .btn-container
+  {
+    min-width: 50px;
+  }
+  
+  .login-text {
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
+    margin: 0;
+  }
+  
+  
+  .strong-p
+  {
+    font-weight: 500;
+  }
+  
+  .card
+  {
+    border-radius: 30px;
+  }
+  

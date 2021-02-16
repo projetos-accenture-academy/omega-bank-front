@@ -1,0 +1,189 @@
+{
+  "data": {
+    "user": "Joao",
+    "accounts": [
+      {
+        "id": 1,
+        "description": "Conta Corrente",
+        "balance": 10052.85,
+        "statements": [
+          {
+            "id": 0,
+            "date": "2020-01-01",
+            "description": "Feita do mês",
+            "chartAccount": 1,
+            "type": {
+              "short": "D",
+              "full": "Débito"
+            },
+            "ammount": 989
+          },
+          {
+            "id": 0,
+            "date": "2020-01-01",
+            "description": "altos ifood",
+            "chartAccount": 1,
+            "type": {
+              "short": "T",
+              "full": "Transferência"
+            },
+            "ammount": 233
+          },
+          {
+            "id": 0,
+            "date": "2020-01-01",
+            "description": "aquela pizza",
+            "chartAccount": 1,
+            "type": {
+              "short": "T",
+              "full": "Transferência"
+            },
+            "ammount": 3242.4
+          },
+          {
+            "id": 0,
+            "date": "2020-01-01",
+            "description": "Feita do mês",
+            "chartAccount": 1,
+            "type": {
+              "short": "R",
+              "full": "Receita"
+            },
+            "ammount": 0
+          },
+          {
+            "id": 0,
+            "date": "2020-01-01",
+            "description": "Feita do mês",
+            "chartAccount": 1,
+            "type": {
+              "short": "D",
+              "full": "Despesa"
+            },
+            "ammount": 1212
+          },
+          {
+            "id": 0,
+            "date": "2020-01-01",
+            "description": "Feita do mês",
+            "chartAccount": 1,
+            "type": {
+              "short": "R",
+              "full": "Receita"
+            },
+            "ammount": 0
+          },
+          {
+            "id": 0,
+            "date": "2020-01-11",
+            "description": "Feita do mês",
+            "chartAccount": 1,
+            "type": {
+              "short": "R",
+              "full": "Receita"
+            },
+            "ammount": 0
+          },
+          {
+            "id": 0,
+            "date": "2020-01-01",
+            "description": "Feita do mês",
+            "chartAccount": 1,
+            "type": {
+              "short": "R",
+              "full": "Receita"
+            },
+            "ammount": 0
+          },
+          {
+            "id": 0,
+            "date": "2020-01-21",
+            "description": "Feita do mês",
+            "chartAccount": 1,
+            "type": {
+              "short": "R",
+              "full": "Receita"
+            },
+            "ammount": 0
+          },
+          {
+            "id": 0,
+            "date": "2020-01-21",
+            "description": "Feita do mês",
+            "chartAccount": 1,
+            "type": {
+              "short": "R",
+              "full": "Receita"
+            },
+            "ammount": 0
+          },
+          {
+            "id": 0,
+            "date": "2020-02-02",
+            "description": "Feita do mês",
+            "chartAccount": 1,
+            "type": {
+              "short": "R",
+              "full": "Receita"
+            },
+            "ammount": 0
+          },
+          {
+            "id": 0,
+            "date": "2020-02-02",
+            "description": "Feita do mês",
+            "chartAccount": 1,
+            "type": {
+              "short": "R",
+              "full": "Receita"
+            },
+            "ammount": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "description": "Conta Popuança",
+        "balance": 231923.93,
+        "statements": [
+          {
+            "id": 0,
+            "date": "2020-01-02",
+            "description": "Juros",
+            "chartAccount": 1,
+            "type": {
+              "short": "R",
+              "full": "Receita"
+            },
+            "ammount": 2.9
+          },
+          {
+            "id": 0,
+            "date": "2020-02-02",
+            "description": "Aluguel",
+            "chartAccount": 1,
+            "type": {
+              "short": "T",
+              "full": "Transferência"
+            },
+            "ammount": 700
+          }
+        ]
+      }
+    ]
+  },
+  "planos": [
+    {
+      "id": 1,
+      "description": "Plano 01"
+    },
+    {
+      "id": 1,
+      "description": "Plano 02"
+    },
+    {
+      "id": 1,
+      "description": "Plano 03"
+    }
+  ]
+}

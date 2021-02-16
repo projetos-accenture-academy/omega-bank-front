@@ -21,8 +21,13 @@ export class StatementsFilterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onNoClick(): void {
+  onCancel(): void {
     this.dialogRef.close();
   }
 
+
+  onSubmit() {
+
+    this.dialogRef.close(this.range.value);
+  }
 }

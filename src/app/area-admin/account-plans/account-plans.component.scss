@@ -1,0 +1,31 @@
+@import "../../../css/variables.scss";
+
+$margin-top-card-elevated: -40px;
+
+.mat-form-field {
+  font-size: 1.1em;
+}
+
+table {
+  width: 100%;
+}
+
+mat-card {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+mat-card-header,
+.content-account-plans .search-local-input {
+  padding-left: $padding-default !important;
+  padding-right: $padding-default !important;
+}
+
+.content-account-plans .search-local-input {
+  width: 100%;
+}
+
+mat-card-content {
+  margin-bottom: 0 !important;
+}

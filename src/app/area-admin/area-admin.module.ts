@@ -19,15 +19,16 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
+import { AccountPlansComponent } from './account-plans/account-plans.component';
 import { AccountStatementsComponent } from './account-statements/account-statements.component';
 import { StatementsFilterComponent } from './account-statements/statements-filter/statements-filter.component';
 import { StatementsListComponent } from './account-statements/statements-list/statements-list.component';
 import { AreaAdminRoutingModule } from './area-admin-routing.module';
 import { AreaAdminComponent } from './area-admin.component';
-import { CategoryRecordComponent } from './category-record/category-record.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderAdminComponent } from './header-admin/header-admin.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AccountPlansFormComponent } from './account-plans/account-plans-form/account-plans-form.component';
 
 
 
@@ -36,7 +37,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [AreaAdminComponent, HeaderAdminComponent, DashboardComponent,
-    UserProfileComponent, CategoryRecordComponent, AccountStatementsComponent, StatementsListComponent, StatementsFilterComponent],
+    UserProfileComponent, AccountPlansComponent, AccountStatementsComponent,
+    StatementsListComponent, StatementsFilterComponent, AccountPlansFormComponent],
   imports: [
     CommonModule,
     MatSidenavModule,

@@ -1,0 +1,79 @@
+<div style="height: 100%; flex-direction: column; display: flex;">
+  <app-header-admin [title]="'Plano de contas'"></app-header-admin>
+  <div class="content-default-container content-account-plans justify-content-around align-items-center h-100">
+
+    <mat-spinner diameter="60" *ngIf="isLoadingResult"></mat-spinner>
+
+    <div *ngIf="!isLoadingResult && errorLoadingAPI" class="text-dark row justify-content-center align-items-center">
+      <!--"https://br.freepik.com/vetores/abstrat"-->
+      <img class="col-md-5" src="../../../assets/person_holding_phone.png" alt="No results found">
+      <div class="text-dark text-center col-md-5 justify-content-center align-items-center">
+        <p class="no-results">
+          Ops! Ocorreu algum erro e não conseguimos carregar seus planos de contas
+        </p>
+        <button mat-raised-button color="primary" (click)="getDataAPI()">
+          <mat-icon>refresh</mat-icon>
+          Tentar novamente
+        </button>
+      </div>
+    </div>
+    <div *ngIf="!isLoadingResult && !errorLoadingAPI" class="col-md-8 col-lg-6 mt-5 mt-md-0 mb-md-5 h-100">
+
+      <mat-card>
+        <mat-card-header class="d-flex justify-content-end mb-3">
+          <button mat-raised-button color="primary" class="mat-elevation-z12" (click)="openDialog()">
+            <mat-icon>add_circle_outline</mat-icon> Novo plano
+          </button>
+        </mat-card-header>
+        <mat-card-content>
+
+          <div class="col px-0 d-flex">
+            <mat-form-field class="search-local-input flex" appearance="fill" [color]="'accent'">
+              <mat-label>Buscar planos de contas...</mat-label>
+              <input matInput (keyup)="applyFilter($event)" placeholder='Ex. "Salário", "Aluguel"' #input><button
+                mat-button *ngIf="input.value;else search" matSuffix mat-icon-button aria-label="Clear"
+                (click)="input.value = ''">
+                <mat-icon>close</mat-icon>
+              </button>
+              <ng-template #search>
+                <div matSuffix mat-icon-button>
+                  <mat-icon>search</mat-icon>
+                </div>
+              </ng-template>
+            </mat-form-field>
+          </div>
+          <div class="mat-elevation-z8">
+            <div>
+              <div [ngClass]="isLoadingResult ? 'loading-shade' : ''">
+                <mat-spinner *ngIf="isLoadingResult" style="z-index: 999;"></mat-spinner>
+              </div>
+              <table mat-table [dataSource]="dataSource" matSort>
+
+                <ng-container matColumnDef="description">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Descrição </th>
+                  <td mat-cell *matCellDef="let row"> {{row.description}} </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                <!-- Row shown when there is no matching data. -->
+                <tr class="mat-row text-center" *matNoDataRow>
+                  <td class="mat-cell" colspan="4">Nenhum plano de contas para o filtro "{{input.value}}"</td>
+                </tr>
+              </table>
+
+              <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]"></mat-paginator>
+            </div>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+
+
+
+    </div>
+  </div>
+
+</div>

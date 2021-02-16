@@ -17,6 +17,6 @@ export class AccountStatementsService {
 
   getUserAccountStatements(params: string = ""): Observable<UserAccountData> {
 
-    return this.http.get<UserAccountData>(this.API_URL + params);
+    return this.http.get<UserAccountData>(this.API_URL + "data" + params);
   }
 }

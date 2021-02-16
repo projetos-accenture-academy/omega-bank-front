@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-header class=" header-balance flex-row justify-content-between">
+  <mat-card-header class=" header-balance flex-row justify-content-between  mb-2">
     <div>
       <mat-card-title>
         {{accountWithStatements.description}}
@@ -7,7 +7,9 @@
       <mat-card-subtitle>{{startDate | date}} - {{endDate | date}}</mat-card-subtitle>
     </div>
     <div class="container-balance mat-elevation-z12 flex-column">
-      <div class="balance-label">Saldo</div>
+      <div class="balance-label">
+        <mat-icon class="ml-1">credit_card</mat-icon> Saldo
+      </div>
       <div class="balance-value">{{accountWithStatements.balance | currency}}</div>
     </div>
   </mat-card-header>
