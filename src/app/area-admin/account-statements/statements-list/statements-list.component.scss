@@ -36,7 +36,7 @@ table {
   width: 100%;
 }
 
-.type-entry {
+.type-statement {
   font-weight: bold;
   width: 30px;
   height: 30px;
@@ -101,18 +101,17 @@ mat-card {
   padding-bottom: 0 !important;
 }
 
-mat-card-header,
-.search-local-input {
+mat-card-header {
   padding-left: $padding-default !important;
   padding-right: $padding-default !important;
 }
 
-.search-local-input {
-  width: 90%;
-}
-
 mat-card-content {
   margin-bottom: 0 !important;
+}
+
+.search-local-input {
+  padding-right: $padding-default !important;
 }
 
 .loading-shade {
@@ -127,4 +126,26 @@ mat-card-content {
   align-items: center;
   justify-content: center;
   border-radius: $border-radius-10 $border-radius-10 0 0;
+}
+
+@media only screen and (max-width: 480px) {
+  .header-balance {
+    flex-direction: column !important;
+  }
+  .container-balance {
+    margin-top: -90%;
+  }
+  .content-list-statements {
+    margin-top: 40%;
+  }
+  .title-account-and-date {
+    margin-top: 25%;
+  }
+  .container-date-filter {
+    flex-direction: column;
+
+    .search-local-input {
+      padding-right: 0 !important;
+    }
+  }
 }
