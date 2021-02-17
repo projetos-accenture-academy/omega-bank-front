@@ -20,7 +20,7 @@ import { SignupRequest } from './signup.interfaces';
     ) { }
   
     criarUsuario(signupReq: SignupRequest): Observable<null> {
-      return this.http.post<any>(this.API_URL + '/usuarios', signupReq);
+      return this.http.post<any>(this.API_URL + '/user', signupReq);
     }
   }
   
