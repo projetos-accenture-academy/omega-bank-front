@@ -23,7 +23,7 @@
           -->
           <div class="form-group">
             <label for="nome" class="d-none d-sm-block">Nome completo:</label>
-            <input   [(ngModel)]="dadosCadastrais.nome"   [class.is-invalid]="exibeErro('nome', form)" #nome type="text" class="form-control" id="nome" aria-describedby="nome"
+            <input   [(ngModel)]="dadosCadastrais.nome"   [class.is-invalid]="exibeErro('nome', form)" #nome name="nome" type="text" class="form-control" id="nome" aria-describedby="nome"
               placeholder="Insira seu nome completo..." required>
           </div>
 
