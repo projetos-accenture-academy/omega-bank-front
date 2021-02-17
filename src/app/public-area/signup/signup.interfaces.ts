@@ -10,6 +10,7 @@ export interface SignupRequest{
     login:string,
     senha:string,
     senha1:string
+ 
 
 
 }

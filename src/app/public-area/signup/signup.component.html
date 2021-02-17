@@ -1,4 +1,6 @@
 <app-header></app-header>
+
+
 <div class="container">
   <div class="row mt-5 mb-5 justify-content-center">
     <div class="col-md-6 col-sm-4 col-xs-12 m-auto">
@@ -16,47 +18,49 @@
         </div>
 
         <form class="p-4" #form="ngForm" (ngSubmit)="onSubmit(form)">
-
+          <!--
+          <div *ngIf="!usuarioCriado else usuarioCriadoBlock"></div>
+          -->
           <div class="form-group">
             <label for="nome" class="d-none d-sm-block">Nome completo:</label>
-            <input type="text" class="form-control" id="name-input" aria-describedby="nome"
+            <input   [(ngModel)]="dadosCadastrais.nome"   [class.is-invalid]="exibeErro('nome', form)" #nome type="text" class="form-control" id="nome" aria-describedby="nome"
               placeholder="Insira seu nome completo..." required>
           </div>
 
           <div class="form-group">
-            <label for="nome" class="d-none d-sm-block">CPF:</label>
-            <input type="text" class="form-control" id="cpf-input" mask="000.000.000-00" aria-describedby="cpf"
-              placeholder="Insira o seu cpf..." required>
+            <label for="cpf" class="d-none d-sm-block">CPF:</label>
+            <input type="text" class="form-control" id="cpf" name="cpf" mask="000.000.000-00" aria-describedby="cpf"
+              placeholder="Insira o seu cpf..." required  [(ngModel)]="dadosCadastrais.cpf" name="cpf" [class.is-invalid]="exibeErro('cpf', form)" #cpf  >
           </div>
 
 
           <div class="form-group">
             <label for="login" class="d-none d-sm-block">Login:</label>
             <input type="login" class="form-control" id="login" aria-describedby="login"
-              placeholder="Insira um login (username/apelido)" required>
+              placeholder="Insira um login (username/apelido)" required  [(ngModel)]="dadosCadastrais.login" name="login" [class.is-invalid]="exibeErro('login', form)" #login   >
           </div>
 
 
           <div class="form-group">
             <label for="email" class="d-none d-sm-block">Endereço de Email:</label>
             <input type="email" class="form-control" id="email" aria-describedby="email"
-              placeholder="Digite aqui o seu email" required>
+              placeholder="Digite aqui o seu email" required  [(ngModel)]="dadosCadastrais.email" name="email" [class.is-invalid]="exibeErro('email', form)" #email    >  
           </div>
 
           <div class="form-group">
             <label for="telefone" class="d-none d-sm-block">Telefone:</label>
             <input type="phone" class="form-control" id="telefone" aria-describedby="telefone"
-              placeholder="Telefone: DDD12345... (apenas números)" mask="00000000000" required>
+              placeholder="Telefone: DDD12345... (apenas números)" mask="00000000000" required   [(ngModel)]="dadosCadastrais.telefone" name="telefone" [class.is-invalid]="exibeErro('telefone', form)" #telefone    >
           </div>
 
           <div class="form-group">
             <label for="senha" class="d-none d-sm-block">Senha:</label>
-            <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" required>
+            <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" required  [(ngModel)]="dadosCadastrais.senha" name="senha" [class.is-invalid]="exibeErro('senha', form)" #senha    >
           </div>
 
           <div class="form-group">
             <label for="senha" class="d-none d-sm-block">Senha:</label>
-            <input type="password" class="form-control" id="senha1" placeholder="Repita a sua senha" required>
+            <input type="password" class="form-control" id="senha1" placeholder="Repita a sua senha" required [(ngModel)]="dadosCadastrais.senha1" name="senha1" [class.is-invalid]="exibeErro('senha1', form)" #senha1  >
           </div>
 
           <small id="" class="form-text text-muted">Não compartilharemos sua informação com ninguém.</small>

@@ -14,10 +14,10 @@ import { SignupService } from './signup.service';
 })
 export class SignupComponent {
 
-  @ViewChild('nomeInput') nomeInput: ElementRef | undefined;
-  @ViewChild('loginInput') loginInput: ElementRef | undefined;
-  @ViewChild('cpfInput') cpfInput: ElementRef | undefined;
-  @ViewChild('senhaInput') senhaInput: ElementRef | undefined;
+  @ViewChild('nome') nome: ElementRef | undefined;
+  @ViewChild('login') login: ElementRef | undefined;
+  @ViewChild('cpf') cpf: ElementRef | undefined;
+  @ViewChild('senha') senha: ElementRef | undefined;
 
   dadosCadastrais: SignupRequest = {
     nome: '',
@@ -34,6 +34,7 @@ export class SignupComponent {
   estaCarregando = false;
 
   usuarioCriado = false;
+  usuarioCriadoBlock=false;
 
   constructor(
     private cadastroService: SignupService,
@@ -90,12 +91,16 @@ export class SignupComponent {
       );
   }
 
+
   onSuccessCriarUsuario() {
     this.usuarioCriado = true;
   }
 
   onErrorCriarUsuario(errorResponse: HttpErrorResponse) {
+    
+    console.log(this.dadosCadastrais);
     console.log(errorResponse);
+
     this.erro = true;
 
     if (errorResponse.error.codigo === ErrosDeCadastro.UsuarioJaExiste) {
