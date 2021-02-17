@@ -13,27 +13,31 @@ export class AreaAdminComponent implements OnInit {
 
   mode: MatDrawerMode = 'side';
 
-  menuitems: MenuItem[] = [{
-    title: 'Dashboard',
-    routerLink: 'dashboard',
-    tooltip: 'Dashboard com resumos',
-    icon: 'dashboard'
-  }, {
-    title: 'Plano de contas',
-    routerLink: 'planos-conta',
-    tooltip: 'Cadastro de planos de contas',
-    icon: 'category'
-  }, {
-    title: 'Meu perfil',
-    routerLink: 'meu-perfil',
-    tooltip: 'Dados de cadastro',
-    icon: 'account_circle'
-  }, {
-    title: 'Extratos',
-    routerLink: 'extrato',
-    tooltip: 'Extrato de lançamentos de contas',
-    icon: 'summarize'
-  }]
+  menuitems: MenuItem[] = [
+    {
+      title: 'Extratos',
+      routerLink: 'extrato',
+      tooltip: 'Extrato de lançamentos de contas',
+      icon: 'summarize'
+    },
+    {
+      title: 'Transações',
+      routerLink: 'transacao',
+      tooltip: 'Transações (Receita, Despesa e Transferências)',
+      icon: 'paid'
+    }, {
+      title: 'Plano de contas',
+      routerLink: 'planos-conta',
+      tooltip: 'Cadastro de planos de contas',
+      icon: 'category'
+    },
+    {
+      title: 'Meu perfil',
+      routerLink: 'meu-perfil',
+      tooltip: 'Dados de cadastro',
+      icon: 'account_circle'
+    }
+  ]
 
   constructor(private breakpointObserver: BreakpointObserver) {
 

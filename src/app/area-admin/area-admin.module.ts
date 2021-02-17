@@ -30,6 +30,7 @@ import { AreaAdminComponent } from './area-admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderAdminComponent } from './header-admin/header-admin.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { TransactionFormComponent } from './transaction-form/transaction-form.component';
 
 
 
@@ -39,7 +40,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 @NgModule({
   declarations: [AreaAdminComponent, HeaderAdminComponent, DashboardComponent,
     UserProfileComponent, AccountPlansComponent, AccountStatementsComponent,
-    StatementsListComponent, StatementsFilterComponent, AccountPlansFormComponent],
+    StatementsListComponent, StatementsFilterComponent, AccountPlansFormComponent, TransactionFormComponent],
   imports: [
     CommonModule,
     MatSidenavModule,

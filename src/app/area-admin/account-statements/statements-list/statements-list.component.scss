@@ -95,25 +95,26 @@ table {
   }
 }
 
-mat-card {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  padding-bottom: 0 !important;
-}
+.content-list-statements {
+  mat-card {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+  }
 
-mat-card-header {
-  padding-left: $padding-default !important;
-  padding-right: $padding-default !important;
-}
+  mat-card-header {
+    padding-left: $padding-default !important;
+    padding-right: $padding-default !important;
+  }
 
-mat-card-content {
-  margin-bottom: 0 !important;
-}
+  mat-card-content {
+    margin-bottom: 0 !important;
+  }
 
-.search-local-input {
-  padding-right: $padding-default !important;
+  .search-local-input {
+    padding-right: $padding-default !important;
+  }
 }
-
 .loading-shade {
   position: absolute;
   top: $margin-top-card-elevated;

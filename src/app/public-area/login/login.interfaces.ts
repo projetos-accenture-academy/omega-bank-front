@@ -3,7 +3,7 @@ import { Usuario } from '../../shared/interfaces/usuario.interface';
 
 
 export interface LoginCredenciais {
-  usuario: string;
+  login: string;
   senha: string;
 }
 
