@@ -40,13 +40,13 @@
               placeholder="Insira um login (username/apelido)" required  [(ngModel)]="dadosCadastrais.login" name="login" [class.is-invalid]="exibeErro('login', form)" #login   >
           </div>
 
-
+          <!--
           <div class="form-group">
             <label for="email" class="d-none d-sm-block">Endereço de Email:</label>
             <input type="email" class="form-control" id="email" aria-describedby="email"
               placeholder="Digite aqui o seu email" required  [(ngModel)]="dadosCadastrais.email" name="email" [class.is-invalid]="exibeErro('email', form)" #email    >  
           </div>
-
+        -->
           <div class="form-group">
             <label for="telefone" class="d-none d-sm-block">Telefone:</label>
             <input type="phone" class="form-control" id="telefone" aria-describedby="telefone"
@@ -57,12 +57,12 @@
             <label for="senha" class="d-none d-sm-block">Senha:</label>
             <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" required  [(ngModel)]="dadosCadastrais.senha" name="senha" [class.is-invalid]="exibeErro('senha', form)" #senha    >
           </div>
-          <!---
+          
             <div class="form-group">
             <label for="senha" class="d-none d-sm-block">Senha:</label>
-            <input type="password" class="form-control" id="senha1" placeholder="Repita a sua senha" required [(ngModel)]="dadosCadastrais.senha1" name="senha1" [class.is-invalid]="exibeErro('senha1', form)" #senha1  >
+            <input type="password" class="form-control" id="senha1" placeholder="Repita a sua senha" required  name="senha1" >
           </div>
-        -->
+        
           <small id="" class="form-text text-muted">Não compartilharemos sua informação com ninguém.</small>
 
           <div class="btn-container">
