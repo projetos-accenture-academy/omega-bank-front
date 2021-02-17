@@ -27,7 +27,8 @@ export class SignupComponent {
     email:'',
     login: '',
     senha: '',
-    senha1:''
+   
+ 
   };
 
   erro = false
