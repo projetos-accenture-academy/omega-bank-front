@@ -19,6 +19,8 @@ export class SignupComponent {
   @ViewChild('cpf') cpf: ElementRef | undefined;
   @ViewChild('telefone') telefone: ElementRef | undefined;
   @ViewChild('senha') senha: ElementRef | undefined;
+  @ViewChild('senha1') senha1: ElementRef | undefined;
+  
 
   dadosCadastrais: SignupRequest = {
     nome: '',
@@ -27,6 +29,7 @@ export class SignupComponent {
     email:'',
     login: '',
     senha: '',
+    senha1:''
    
  
   };

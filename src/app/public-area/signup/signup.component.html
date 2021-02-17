@@ -18,9 +18,9 @@
         </div>
 
         <form class="p-4" #form="ngForm" (ngSubmit)="onSubmit(form)">
-          <!--
+          
           <div *ngIf="!usuarioCriado else usuarioCriadoBlock"></div>
-          -->
+          
           <div class="form-group">
             <label for="nome" class="d-none d-sm-block">Nome completo:</label>
             <input   [(ngModel)]="dadosCadastrais.nome"   [class.is-invalid]="exibeErro('nome', form)" #nome name="nome" type="text" class="form-control" id="nome" aria-describedby="nome"
@@ -60,18 +60,34 @@
           
             <div class="form-group">
             <label for="senha" class="d-none d-sm-block">Senha:</label>
-            <input type="password" class="form-control" id="senha1" placeholder="Repita a sua senha" required  name="senha1" >
+            <input type="password" class="form-control" id="senha1" placeholder="Repita a sua senha" required  name="senha1" [(ngModel)]="dadosCadastrais.senha1" name="senha1" [class.is-invalid]="exibeErro('senha1', form)" #senha1 >
           </div>
-        
+          <p *ngIf="form.controls?.senha?.errors?.minlength"> Sua senha deve conter no mínimo 5 caracteres. </p>
+          <p *ngIf="dadosCadastrais.senha != dadosCadastrais.senha1"> Confirme a sua senha nos dois campos de senha </p>
           <small id="" class="form-text text-muted">Não compartilharemos sua informação com ninguém.</small>
-
-          <div class="btn-container">
-            <button type="submit" id="btn-signup" class="btn btn-primary form-control"  ><b>Enviar cadastro</b></button>
+          <div class="alert alert-danger mt-3" *ngIf="erro">
+            {{ mensagemErro || 'Ops, algo deu errado!' }}
           </div>
+          <div class="btn-container">
+            <button type="submit" id="btn-signup" class="btn btn-primary form-control" *ngIf="!estaCarregando; else spinner" ><b>Enviar cadastro</b></button>
+          </div>
+
+
+      <ng-template #spinner>
+        <div class="spinner-border mt-4" role="status"></div>
+      </ng-template> 
+
+
         </form>
 
 
       </div>
+      <ng-template #usuarioCriadoBlock>
+        <h1> {{ dadosCadastrais.nome }}, seja bem-vindo! 🤩</h1>
+        <p>
+          Sua conta foi criada com sucesso. <a routerLink="/login">Faça login aqui.</a>
+        </p>
+      </ng-template>
     </div>
   </div>
 </div>

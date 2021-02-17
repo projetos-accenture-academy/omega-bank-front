@@ -8,7 +8,9 @@ export interface SignupRequest{
     email:string,
     telefone:string,
     login:string,
-    senha:string
+    senha:string,
+    senha1:string
+    
   
  
 
