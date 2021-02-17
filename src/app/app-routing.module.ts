@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { PublicAreaComponent } from './public-area/public-area.component';
+import { HomeComponent } from './public-area/home/home.component';
+import { LoginComponent } from './public-area/login/login.component';
+import { SignupComponent } from './public-area/signup/signup.component';
 
 
 //import { HomeComponent } from './home/home.component';
@@ -10,14 +12,25 @@ import { PublicAreaComponent } from './public-area/public-area.component';
 
 const routes: Routes = [
   {
-    path: "home",
-    loadChildren: () => import('./public-area/public-area.module').then(m => m.PublicAreaModule),
-    component: PublicAreaComponent,
-    //canActivate: [NotLoggedGuard], //TODO: Create this
+    path: "",
+    redirectTo: "home",
+    pathMatch: 'full'
   },
   {
-    path: 'admin',
+    path: "admin",
     loadChildren: () => import('./area-admin/area-admin.module').then(m => m.AreaAdminModule)
+  },
+  {
+    path: "login",
+    component: LoginComponent
+  },
+  {
+    path: "signup",
+    component: SignupComponent
+  },
+  {
+    path: "home",
+    component: HomeComponent
   },
 
 ];

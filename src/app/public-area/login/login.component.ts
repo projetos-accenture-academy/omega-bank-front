@@ -1,12 +1,12 @@
-import { Component, ElementRef, ViewChild} from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
-
-//TODO: Ajustar todos os comentários!
+import { Router } from '@angular/router';
 
 import { LoginResponse } from './login.interfaces';
 import { LoginService } from './login.service';
+
+
+//TODO: Ajustar todos os comentários!
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ import { LoginService } from './login.service';
 })
 export class LoginComponent {
 
-  
+
   @ViewChild('username-input') usernameInput: ElementRef | undefined;
   @ViewChild('password-input') pwInput: ElementRef | undefined;
 
@@ -32,9 +32,10 @@ export class LoginComponent {
   ) { }
 
   onLoginButtonSubmit(form: NgForm) {
+    this.router.navigate(['admin']);
 
     this.loginError = false;
-    
+
     if (!form.valid) {
       form.controls.username.markAsTouched();
       form.controls.pw.markAsTouched();
@@ -69,20 +70,20 @@ export class LoginComponent {
       usuario: this.username,
       senha: this.pw
     };
-    
+
     this.loginService.logar(credenciais)
       .subscribe(
         response => this.onSuccessLogin(response),
         error => this.onErrorLogin(error)
       );
-      
+
   }
 
-  
+
   onSuccessLogin(response: LoginResponse) {
     this.router.navigate(['admin']);
   }
-  
+
 
   onErrorLogin(error: any) {
     console.log("Error logging in");
