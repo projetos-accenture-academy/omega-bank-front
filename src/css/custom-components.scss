@@ -1,0 +1,59 @@
+@import "./variables.scss";
+
+
+/**
+HTML Elements
+**/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /*Comentei para add no header diretamente, estava influenciando em componentes do angular material*/
+  /*color: $accent;
+  font-weight: 600 !important;
+  font-family: $font-family-logo;
+  margin: 0 !important;
+  text-transform: uppercase;*/
+}
+
+// Override no background do modal do angular material (escurecendo um pouco mais)
+.cdk-overlay-dark-backdrop {
+  background: rgb(0, 0, 0, 0.82) !important;
+}
+
+.mat-dialog-title {
+  font-size: 1.5em !important;
+  padding: $padding-default;
+  display: block;
+  background-color: $accent;
+  margin-bottom: 20px !important;
+}
+
+// wrapper para os containers iniciais de cada component
+.content-default-container {
+  padding: $padding-default;
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+/**
+CUSTOMIZAÇÕES QUE NÃO FUNCIONAM DIRETAMENTE NO CSS DOS COMPONENTES
+**/
+// Remover bug de scroll no sidenav dentro do módulo area-admin
+.area-admin .mat-drawer-inner-container {
+  overflow: hidden !important;
+}
+
+// Removendo div do carde na tela de extratos
+.header-balance .mat-card-header-text {
+  display: none !important;
+}
+
+// TEla
+.container-account .mat-select-value {
+  max-width: fit-content !important;
+}

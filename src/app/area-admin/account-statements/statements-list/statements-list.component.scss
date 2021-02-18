@@ -1,0 +1,152 @@
+@import "../../../../css/variables.scss";
+
+$margin-top-card-elevated: -40px;
+
+@mixin mat-table-columns($columns) {
+  .mat-column- {
+    @each $colName, $props in $columns {
+      $width: map-get($props, "width");
+
+      &#{$colName} {
+        flex: $width;
+        width: $width;
+      }
+    }
+  }
+}
+
+@include mat-table-columns(
+  (
+    date: (
+      width: 25%,
+    ),
+    description: (
+      width: 40%,
+    ),
+    type: (
+      width: 10%,
+    ),
+    ammount: (
+      width: 25%,
+    ),
+  )
+);
+
+table {
+  width: 100%;
+}
+
+.type-statement {
+  font-weight: bold;
+  width: 30px;
+  height: 30px;
+  /* padding: 10px; */
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.tooltip-accent {
+  background: $accent !important;
+  font-size: 1.05em;
+}
+
+.container-list-statements {
+  display: flex;
+}
+
+.mat-form-field {
+  font-size: 1.1em;
+}
+
+.ammount-column-header .mat-sort-header-container {
+  justify-content: flex-end !important;
+}
+
+.container-balance {
+  min-width: 150px;
+  background-color: $accent;
+  border-radius: $border-radius-10;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  height: fit-content;
+  margin-top: $margin-top-card-elevated;
+  min-width: min(250px, 40%);
+
+  .balance-value {
+    font-size: 1.2em;
+    padding: $padding-default;
+    font-weight: bold;
+    align-self: flex-end;
+  }
+
+  .balance-label {
+    align-self: flex-start;
+    font-size: 1.1em;
+    padding: $padding-default;
+    padding-bottom: 0 !important;
+    text-align: left;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.content-list-statements {
+  mat-card {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  mat-card-header {
+    padding-left: $padding-default !important;
+    padding-right: $padding-default !important;
+  }
+
+  mat-card-content {
+    margin-bottom: 0 !important;
+  }
+
+  .search-local-input {
+    padding-right: $padding-default !important;
+  }
+}
+.loading-shade {
+  position: absolute;
+  top: $margin-top-card-elevated;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $border-radius-10 $border-radius-10 0 0;
+}
+
+@media only screen and (max-width: 480px) {
+  .header-balance {
+    flex-direction: column !important;
+  }
+  .container-balance {
+    margin-top: -90%;
+  }
+  .content-list-statements {
+    margin-top: 40%;
+  }
+  .title-account-and-date {
+    margin-top: 25%;
+  }
+  .container-date-filter {
+    flex-direction: column;
+
+    .search-local-input {
+      padding-right: 0 !important;
+    }
+  }
+}

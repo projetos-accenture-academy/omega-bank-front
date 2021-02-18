@@ -1,0 +1,21 @@
+<form class="account-plans-form">
+  <h1 mat-dialog-title>Cadastro de plano de contas</h1>
+
+  <div mat-dialog-content>
+
+    <mat-form-field class="description-full-width" appearance="fill" [color]="'accent'">
+      <mat-label>Nome do plano</mat-label>
+      <input type="text" matInput [formControl]="nameFormControl" [(ngModel)]="data.description"
+        placeholder="Ex. Salário">
+
+      <mat-error *ngIf="nameFormControl.hasError('required')">
+        O campo acima é <strong>obrigatório</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions class="justify-content-end">
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button mat-button (click)="onSubmitData()" color="accent" [disabled]="nameFormControl.hasError('required')">Salvar
+      plano</button>
+  </div>
+</form>

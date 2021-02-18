@@ -1,1 +1,51 @@
-<p>user-profile works!</p>
+<div style="height: 100%; flex-direction: column; display: flex;">
+
+  <app-header-admin [title]="'Transação bancária'"></app-header-admin>
+
+  <div class="content-default-container user-profile-content justify-content-center">
+    <mat-card style="height: fit-content;">
+      <mat-card-header class="header-balance flex-row mb-2">
+        <div>
+          <mat-card-title>
+            Meus dados de cadastro
+          </mat-card-title>
+        </div>
+      </mat-card-header>
+      <mat-card-content class="content-form-transaction">
+        <form class="mat-elevation-z12 p-3" [formGroup]="userForm" hide>
+          <div class="row">
+            <div class="col-sm-12 col-md-8">
+              <mat-form-field appearance="fill" color="accent" [hideRequiredMarker]="true">
+                <mat-label>Nome</mat-label>
+                <input matInput placeholder="" required formControlName="name" [(ngModel)]="name" readonly>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-12 col-md-4">
+              <mat-form-field appearance="fill" color="accent" [hideRequiredMarker]="true">
+                <mat-label>Login</mat-label>
+                <input matInput placeholder="" required formControlName="login" [(ngModel)]="login" readonly>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <mat-form-field appearance="fill" color="accent" [hideRequiredMarker]="true">
+                <mat-label>CPF</mat-label>
+                <input matInput placeholder="" required formControlName="cpf" mask="000.000.000-00" [(ngModel)]="cpf"
+                  readonly>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <mat-form-field appearance="fill" color="accent" [hideRequiredMarker]="true">
+                <mat-label>Telefone</mat-label>
+                <input matInput placeholder="" required formControlName="phonenumber" mask="(00) 0 0000 0000"
+                  [(ngModel)]="phonenumber" readonly>
+              </mat-form-field>
+            </div>
+          </div>
+
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

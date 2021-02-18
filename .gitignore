@@ -44,3 +44,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#Env
+/environments
+environment.prod.ts
+environment.ts

@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AccountPlansComponent } from './account-plans/account-plans.component';
+import { AccountStatementsComponent } from './account-statements/account-statements.component';
 import { AreaAdminComponent } from './area-admin.component';
-import { CategoryRecordComponent } from './category-record/category-record.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { TransactionFormComponent } from './transaction-form/transaction-form.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'extrato',
     pathMatch: 'full',
   },
   {
@@ -17,12 +18,16 @@ const routes: Routes = [
     component: AreaAdminComponent,
     children: [
       {
-        path: 'dashboard',
-        component: DashboardComponent,
+        path: 'extrato',
+        component: AccountStatementsComponent,
+      },
+      {
+        path: 'transacao',
+        component: TransactionFormComponent,
       },
       {
         path: 'planos-conta',
-        component: CategoryRecordComponent,
+        component: AccountPlansComponent,
       },
       {
         path: 'meu-perfil',

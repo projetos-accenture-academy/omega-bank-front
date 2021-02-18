@@ -1,8 +1,7 @@
-@import "../../css/variables.scss";
+@import "../../../css/variables.scss";
 
 .container-header {
   min-height: $min-height-header;
-  color: $accent !important;
   display: flex;
   align-items: center;
 
@@ -16,6 +15,29 @@
 }
 
 .welcome {
-  font-size: 1.4em !important;
+  font-size: 1.2em !important;
   padding-right: $padding-default;
+  color: $accent;
+
+  span {
+    font-size: 1.2em !important;
+  }
+
+  .mat-icon {
+    font-size: 1.8em !important;
+    height: fit-content !important;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $accent;
+  font-weight: 600 !important;
+  font-family: $font-family-logo;
+  margin: 0 !important;
+  text-transform: uppercase;
 }

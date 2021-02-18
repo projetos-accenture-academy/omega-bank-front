@@ -1,0 +1,72 @@
+@import "../../../css/variables.scss";
+
+$margin-top-card-elevated: -40px;
+
+table {
+  width: 100%;
+}
+
+mat-card {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+mat-card-header,
+.content-account-plans .search-local-input {
+  padding-left: $padding-default !important;
+  padding-right: $padding-default !important;
+}
+
+.content-account-plans .mat-card-header-text {
+  align-self: center !important;
+  margin-left: 0 !important;
+}
+
+.content-account-plans mat-card-title {
+  margin: 0 !important;
+}
+
+.content-account-plans .search-local-input {
+  width: 100%;
+}
+
+mat-card-content {
+  margin-bottom: 0 !important;
+}
+
+.edit-icon {
+  cursor: pointer;
+}
+
+.mat-form-field {
+  font-size: 1.1em;
+}
+
+.no-results {
+  line-height: 1.4;
+  font-size: 1.5em;
+  color: $accent;
+  padding: 15px;
+}
+
+@mixin mat-table-columns($columns) {
+  .mat-column- {
+    @each $colName, $props in $columns {
+      $width: map-get($props, "width");
+
+      &#{$colName} {
+        text-align: end;
+        width: $width;
+      }
+    }
+  }
+}
+
+@include mat-table-columns(
+  (
+    tools: (
+      width: 65px,
+    ),
+  )
+);
