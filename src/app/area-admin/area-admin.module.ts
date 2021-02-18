@@ -28,7 +28,6 @@ import { StatementsFilterComponent } from './account-statements/statements-filte
 import { StatementsListComponent } from './account-statements/statements-list/statements-list.component';
 import { AreaAdminRoutingModule } from './area-admin-routing.module';
 import { AreaAdminComponent } from './area-admin.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderAdminComponent } from './header-admin/header-admin.component';
 import { TransactionFormComponent } from './transaction-form/transaction-form.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -39,7 +38,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 @NgModule({
-  declarations: [AreaAdminComponent, HeaderAdminComponent, DashboardComponent,
+  declarations: [AreaAdminComponent, HeaderAdminComponent,
     AccountPlansComponent, AccountStatementsComponent, UserProfileComponent,
     StatementsListComponent, StatementsFilterComponent, AccountPlansFormComponent, TransactionFormComponent],
   imports: [

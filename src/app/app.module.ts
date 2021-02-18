@@ -37,6 +37,7 @@ registerLocaleData(localePT, 'pt');
     MatPaginatorModule,
     HttpClientModule, ReactiveFormsModule,
     MatSnackBarModule,
+
     NgxMaskModule.forRoot(
       {
         dropSpecialCharacters: true //removes mask when saving

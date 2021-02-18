@@ -16,9 +16,10 @@ export interface StatementData {
 
 export interface AccountStatement {
   id: number;
-  description: string;
-  balance: number;
-  statements: StatementData[];
+  descricao: string;
+  saldo: number;
+  tipo: string;
+  transactions: StatementData[];
 }
 
 export interface UserAccountData {

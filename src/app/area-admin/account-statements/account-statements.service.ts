@@ -16,7 +16,12 @@ export class AccountStatementsService {
   ) { }
 
   getUserAccountStatements(initialDate: string = "''", finalDate: string = "''", user: string = "''"): Observable<UserAccountData> {
-    const range = `?dataInicial=${initialDate}&dataFinal=${finalDate}&user=${user}`;
-    return this.http.get<UserAccountData>(this.API_URL + "data" + range);
+    const range = `?dataInicial=${initialDate}&dataFinal=${finalDate}&login=${user}`;
+    return this.http.get<UserAccountData>(this.API_URL + "dashboard" + range);
+  }
+
+  getUserAccountStatementsByAccount(initialDate: string = "''", finalDate: string = "''", user: string = "''", accountType: string = ""): Observable<UserAccountData> {
+    const range = `/${accountType}?dataInicial=${initialDate}&dataFinal=${finalDate}&login=${user}`;
+    return this.http.get<UserAccountData>(this.API_URL + "dashboard" + range);
   }
 }

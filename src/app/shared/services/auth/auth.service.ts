@@ -45,7 +45,7 @@ export class AuthService {
   }
 
   getUserLogin() {
-    return this.userLogin;
+    return this.userLogin?.login;
   }
 
   getToken() {

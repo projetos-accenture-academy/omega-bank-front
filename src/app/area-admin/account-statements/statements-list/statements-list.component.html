@@ -2,7 +2,7 @@
   <mat-card-header class=" header-balance flex-row justify-content-between  mb-2">
     <div class="title-account-and-date">
       <mat-card-title>
-        {{accountWithStatements.description}}
+        {{accountWithStatements.descricao}}
       </mat-card-title>
       <mat-card-subtitle>
         <span class="d-none d-sm-inline">{{startDate | date}} - {{endDate | date}}</span>
@@ -13,7 +13,7 @@
       <div class="balance-label">
         <mat-icon class="mr-2">credit_card</mat-icon> Saldo
       </div>
-      <div class="balance-value">{{accountWithStatements.balance | currency}}</div>
+      <div class="balance-value">{{accountWithStatements.saldo | currency}}</div>
     </div>
   </mat-card-header>
   <mat-card-content class="content-list-statements">

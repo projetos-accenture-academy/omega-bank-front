@@ -39,7 +39,6 @@ export class AccountPlansFormComponent implements OnInit {
     const accountPlan: AccountPlanNewData = {
       description: this.nameFormControl.value,
       login: this.authService.getUser()?.login,
-      type: 1,
     };
 
     let observalbePlan: Observable<AccountPlanNewData>;
