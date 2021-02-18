@@ -1,4 +1,4 @@
-export interface Transaction {
+export interface TransactionOld {
   transactionType: string;
   accountPlan: number;
   sourceAccount: number;
@@ -7,6 +7,19 @@ export interface Transaction {
   date: Date;
   value: number;
   description: string;
-
 }
 
+export interface Transaction {
+
+  accountPlanDescription: string;
+  date: string;
+  description: string;
+  destinationAccountName: string;
+  destinationAccountType: string;
+  id: number;
+  sourceAccountName: string | null;
+  sourceAccountType: string;
+  transactionType: string;
+  value: number;
+
+}

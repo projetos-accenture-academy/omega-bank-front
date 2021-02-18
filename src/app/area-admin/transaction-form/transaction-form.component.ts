@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
+import { AccountPlanData } from '../account-plans/account-plans.interface';
+import { AccountPlansService } from '../account-plans/account-plans.service';
 import { Transaction } from './transaction.interface';
 import { TransactionService } from './transaction.service';
 
@@ -11,6 +14,8 @@ import { TransactionService } from './transaction.service';
   styleUrls: ['./transaction-form.component.scss']
 })
 export class TransactionFormComponent implements OnInit {
+  accountPlans: AccountPlanData[] = [];
+
   transactionForm = new FormGroup({
     ammount: new FormControl('', [
       Validators.required,
@@ -18,9 +23,7 @@ export class TransactionFormComponent implements OnInit {
     date: new FormControl('', [
       Validators.required,
     ]),
-    description: new FormControl('', [
-      Validators.required,
-    ]),
+    description: new FormControl(''),
     accountPlan: new FormControl('', [
       Validators.required,
     ]),
@@ -34,9 +37,22 @@ export class TransactionFormComponent implements OnInit {
     accountDestinationType: new FormControl('')
   });
 
-  constructor(private snackBar: MatSnackBar, private transactionService: TransactionService) { }
+  constructor(private snackBar: MatSnackBar, private auth: AuthService,
+    private plansService: AccountPlansService,
+    private transactionService: TransactionService) {
+
+
+  }
 
   ngOnInit(): void {
+    this.plansService.getAccountPlans().subscribe(
+      result => {
+        console.log(result)
+        this.accountPlans = result;
+      }, error => {
+        this.openSnackBar("Não foi possível obter os planos de contas", "Fechar");
+      }
+    );
   }
 
   isTransfer() {
@@ -44,25 +60,51 @@ export class TransactionFormComponent implements OnInit {
   }
 
   onSubmit() {
+    const type = this.transactionForm.value.typeTransaction;
+    let destName = null;
+    let originName = null;
+    let originType = null;
+    let destType = null;
+
+    console.log(destName, this.transactionForm.value.accountDestinationType);
+
+    if (type == "R") {
+      destName = this.auth.getUserLogin()!;
+      destType = this.transactionForm.value.myAccount;
+    } else if (type == "D") {
+      originName = this.transactionForm.value.accountDestinationName;
+      originType = this.transactionForm.value.accountDestinationType;
+    } else {
+      destName = this.transactionForm.value.accountDestinationType;
+      destType = this.transactionForm.value.accountDestinationNumber;
+      originName = this.auth.getUserLogin()!
+      originType = this.transactionForm.value.myAccount;
+
+    }
 
     const transactionData: Transaction = {
-      transactionType: this.transactionForm.value.typeTransaction,
-      accountPlan: this.transactionForm.value.accountPlan,
-      sourceAccount: this.transactionForm.value.myAccount,
-      destinationAccount: this.transactionForm.value.accountDestinationNumber,
-      destinationAccountType: this.transactionForm.value.accountDestinationType,
+      id: 0,
+      accountPlanDescription: this.transactionForm.value.accountPlan,
+      destinationAccountType: destType,
+      destinationAccountName: destName,
       date: this.transactionForm.value.date,
       value: this.transactionForm.value.ammount,
-      description: this.transactionForm.value.description
+      description: this.transactionForm.value.description,
+      sourceAccountName: originName,
+      sourceAccountType: originType,
+      transactionType: type,
+
     };
 
 
-    this.transactionService.postAccountPlan(transactionData).subscribe(
+    this.transactionService.postTransaction(transactionData).subscribe(
       result => {
+        console.log(transactionData)
         console.log(result)
         this.openSnackBar("Transação realizada com sucesso", "Fechar");
       },
       error => {
+        console.log(transactionData)
         console.log(error)
         this.openSnackBar("Não foi possível realizar a transação", "Fechar");
       }
