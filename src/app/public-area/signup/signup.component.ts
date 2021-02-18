@@ -1,6 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, NgForm } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { finalize, take } from 'rxjs/operators';
 
 import { ErrosDeCadastro } from './signup.enums';
@@ -20,18 +22,18 @@ export class SignupComponent {
   @ViewChild('telefone') telefone: ElementRef | undefined;
   @ViewChild('senha') senha: ElementRef | undefined;
   @ViewChild('senha1') senha1: ElementRef | undefined;
-  
+
 
   dadosCadastrais: SignupRequest = {
     nome: '',
     cpf: '',
-    telefone:'',
-    email:'',
+    telefone: '',
+    email: '',
     login: '',
     senha: '',
-    senha1:''
-   
- 
+    senha1: ''
+
+
   };
 
   erro = false
@@ -39,10 +41,12 @@ export class SignupComponent {
   estaCarregando = false;
 
   usuarioCriado = false;
-  usuarioCriadoBlock=false;
+  usuarioCriadoBlock = false;
 
   constructor(
     private cadastroService: SignupService,
+    private snack: MatSnackBar,
+    private router: Router
   ) { }
 
   onSubmit(form: NgForm) {
@@ -99,10 +103,17 @@ export class SignupComponent {
 
   onSuccessCriarUsuario() {
     this.usuarioCriado = true;
+
+    this.snack.open("Usuário criado! Realize login e aproveite nossos serviços.", "Fechar", {
+      duration: 5000,
+    });
+
+    this.router.navigate(['login']);
+
   }
 
   onErrorCriarUsuario(errorResponse: HttpErrorResponse) {
-    
+
     console.log(this.dadosCadastrais);
     console.log(errorResponse);
 

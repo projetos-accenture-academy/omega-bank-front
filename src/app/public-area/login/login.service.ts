@@ -32,7 +32,7 @@ export class LoginService {
     return this.http.post<LoginResponse>(this.API_URL + 'login', credenciais, this.httpOptions)
       .pipe(
         tap(response => {
-          this.authService.setUser(response.usuario);
+          this.authService.setUser(response.user);
           this.authService.setToken(response.token);
           this.authService.setUserData(response);
         })

@@ -8,10 +8,10 @@ export interface LoginCredenciais {
 }
 
 export interface LoginResponse {
-  conta: Conta,
-  contaCredito: Conta,
-  dataFim: Date;
-  dataInicio: Date;
+  accounts: Conta;
+  tokenExpeditionTime: Date;
+  tokenExpirationTime: Date;
   token: string;
-  usuario: Usuario;
+  login: string;
+  user: Usuario;
 }

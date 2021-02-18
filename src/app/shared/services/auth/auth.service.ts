@@ -37,11 +37,15 @@ export class AuthService {
 
     const usuarioGuardado = localStorage.getItem('userData');
     if (usuarioGuardado) {
-      this.userLogin = JSON.parse(usuarioGuardado);
+      this.userLogin = JSON.parse(usuarioGuardado).user;
       return this.userLogin;
     }
 
     return undefined;
+  }
+
+  getUserLogin() {
+    return this.userLogin;
   }
 
   getToken() {

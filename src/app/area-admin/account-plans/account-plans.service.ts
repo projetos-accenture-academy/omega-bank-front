@@ -29,7 +29,7 @@ export class AccountPlansService {
   getAccountPlans(): Observable<AccountPlanData[]> {
     console.log(this.auth.getToken())
     //return this.http.get<AccountPlanData[]>(this.API_URL + "plan/" + this.auth.getUser()?.login, this.httpOptions);
-    return this.http.get<AccountPlanData[]>(this.API_URL + "plan/26", this.httpOptions);
+    return this.http.get<AccountPlanData[]>(this.API_URL + "plan/" + this.auth.getUser()?.id, this.httpOptions);
   }
 
   postAccountPlan(accountPlan: AccountPlanNewData): Observable<any> {

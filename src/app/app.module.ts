@@ -4,6 +4,7 @@ import localePT from '@angular/common/locales/pt';
 import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMaskModule } from 'ngx-mask';
@@ -35,6 +36,7 @@ registerLocaleData(localePT, 'pt');
     BrowserAnimationsModule,
     MatPaginatorModule,
     HttpClientModule, ReactiveFormsModule,
+    MatSnackBarModule,
     NgxMaskModule.forRoot(
       {
         dropSpecialCharacters: true //removes mask when saving

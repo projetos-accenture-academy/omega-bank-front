@@ -1,3 +1,5 @@
+@import "../../../css/variables.scss";
+
 /*------------ Global ------------*/
 
 * {
@@ -11,7 +13,7 @@ h4,
 h5,
 h6 {
   margin: 0 !important;
-  color: #003586 !important;
+  color: $accent !important;
 }
 
 html {
@@ -25,13 +27,8 @@ p {
 /*------------ IDs ------------*/
 
 #btn-login {
-  background-color: #003586;
-  border: #003586;
-  border-radius: 8px;
-  color: #fff;
-  opacity: 0.92;
-  padding: 6px;
-  width: 18%;
+  background-color: $accent;
+  border-color: $accent;
 }
 
 #btn-login:hover {
