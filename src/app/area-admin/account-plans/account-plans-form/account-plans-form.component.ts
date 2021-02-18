@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
 import { AccountPlanData, AccountPlanNewData } from '../account-plans.interface';
 import { AccountPlansService } from '../account-plans.service';
@@ -23,7 +24,8 @@ export class AccountPlansFormComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: AccountPlanData,
     private snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<AccountPlansFormComponent>,
-    private planService: AccountPlansService) { }
+    private planService: AccountPlansService,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -34,7 +36,11 @@ export class AccountPlansFormComponent implements OnInit {
 
   onSubmitData() {
 
-    const accountPlan: AccountPlanNewData = { description: this.nameFormControl.value };
+    const accountPlan: AccountPlanNewData = {
+      description: this.nameFormControl.value,
+      login: this.authService.getUser()?.login,
+    };
+
     let observalbePlan: Observable<AccountPlanNewData>;
 
     if (this.data.id) {
@@ -49,7 +55,7 @@ export class AccountPlansFormComponent implements OnInit {
         this.dialogRef.close(result);
       },
       error => {
-        this.openSnackBar("Não foi possível salvar o noco plano de contas", "Fechar");
+        this.openSnackBar("Não foi possível salvar o novo plano de contas", "Fechar");
         this.dialogRef.close(null);
       }
     );

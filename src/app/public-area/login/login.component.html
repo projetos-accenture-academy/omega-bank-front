@@ -1,37 +1,49 @@
 <app-header></app-header>
 <!--Main Login Container-->
 <div class="container" style="min-height:100vh">
-  <div class="row mt-5 mb-5">
-    <div class="col-md-6 m-auto">
+  <div class="row mt-5 mb-5 justify-content-center align-items-center">
+    <div class="col-md-5 jusify-content-center d-flex">
       <img src="assets/img/login-omega.svg" class="img-fluid m-auto" width="80%" alt="Ilustração Ômega">
     </div>
-    <div class="col-md-6 m-auto">
+    <div class="col-md-4">
       <div class="card">
         <div class="fluid text-center pt-5">
           <p class="login-text">Viva uma nova experiência!</p>
         </div>
 
-        <form class="p-5" #form="ngForm">
+        <form class="p-5" [formGroup]="formUsuario">
           <div class="form-group">
-            <label for="exampleInputEmail1">E-mail</label>
-            <input id='username-input' name="username" [(ngModel)]="username" type="email" class="form-control  mb-4"
-              placeholder="Digite o seu e-mail ou nome de usuário...">
+            <label for="username">Login</label>
+            <input id='username' name="username" formControlName="username" type="text" class="form-control" required
+              placeholder="">
+            <span class="error-input-validation"
+              *ngIf="this.formUsuario.controls.username.touched && this.formUsuario.controls.username.hasError('required')">
+              Campo obrigatório
+            </span>
           </div>
           <div class="form-group">
-            <label for="senha">Senha</label>
-            <input id='password-input' [(ngModel)]="pw" name="pw" type="password" class="form-control  mb-4"
-              placeholder="Digite a sua senha...">
-
+            <label for="pw">Senha</label>
+            <input id='password' name="password" type="password" formControlName="password" class="form-control"
+              required placeholder="">
+            <span class="error-input-validation"
+              *ngIf="this.formUsuario.controls.password.touched && this.formUsuario.controls.password.hasError('required')">
+              Campo obrigatório
+            </span>
           </div>
-          <p id='login-error-warning' *ngIf="loginError==true">{{loginErrorMessage}}</p>
+          <p id='login-error-warning' *ngIf="loginError">{{loginErrorMessage}}</p>
 
-          <div>
-            <p>Ainda não tem uma conta? <a routerLink="/signup">Cadastre-se!</a></p>
-          </div>
           <div class="btn-container">
-            <a id="btn-login" class="btn btn-primary" (click)="onLoginButtonSubmit(form)"> Login </a>
+            <button *ngIf="!isLoading" id="btn-login" class="btn btn-primary" (click)="onLoginButtonSubmit()">
+              Login
+            </button>
+            <div *ngIf="isLoading" class="spinner-grow" role="status">
+              <span class="visually-hidden"></span>
+            </div>
           </div>
         </form>
+        <div>
+          <p class="text-center mb-4">Ainda não tem uma conta? <a routerLink="/signup">Cadastre-se!</a></p>
+        </div>
       </div>
     </div>
   </div>

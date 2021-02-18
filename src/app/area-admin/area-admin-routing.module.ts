@@ -4,13 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccountPlansComponent } from './account-plans/account-plans.component';
 import { AccountStatementsComponent } from './account-statements/account-statements.component';
 import { AreaAdminComponent } from './area-admin.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { TransactionFormComponent } from './transaction-form/transaction-form.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'extrato',
     pathMatch: 'full',
   },
   {
@@ -22,8 +22,8 @@ const routes: Routes = [
         component: AccountStatementsComponent,
       },
       {
-        path: 'dashboard',
-        component: DashboardComponent,
+        path: 'transacao',
+        component: TransactionFormComponent,
       },
       {
         path: 'planos-conta',

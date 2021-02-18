@@ -19,6 +19,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgxMaskModule } from 'ngx-mask';
 
 import { AccountPlansFormComponent } from './account-plans/account-plans-form/account-plans-form.component';
 import { AccountPlansComponent } from './account-plans/account-plans.component';
@@ -27,8 +28,8 @@ import { StatementsFilterComponent } from './account-statements/statements-filte
 import { StatementsListComponent } from './account-statements/statements-list/statements-list.component';
 import { AreaAdminRoutingModule } from './area-admin-routing.module';
 import { AreaAdminComponent } from './area-admin.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderAdminComponent } from './header-admin/header-admin.component';
+import { TransactionFormComponent } from './transaction-form/transaction-form.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
@@ -37,9 +38,9 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 @NgModule({
-  declarations: [AreaAdminComponent, HeaderAdminComponent, DashboardComponent,
-    UserProfileComponent, AccountPlansComponent, AccountStatementsComponent,
-    StatementsListComponent, StatementsFilterComponent, AccountPlansFormComponent],
+  declarations: [AreaAdminComponent, HeaderAdminComponent,
+    AccountPlansComponent, AccountStatementsComponent, UserProfileComponent,
+    StatementsListComponent, StatementsFilterComponent, AccountPlansFormComponent, TransactionFormComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
@@ -60,7 +61,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     AreaAdminRoutingModule,
     HttpClientModule, MatDialogModule, MatNativeDateModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskModule.forChild()
   ],
 })
 export class AreaAdminModule { }

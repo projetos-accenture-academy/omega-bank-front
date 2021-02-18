@@ -43,6 +43,13 @@ mat-card-content {
   font-size: 1.1em;
 }
 
+.no-results {
+  line-height: 1.4;
+  font-size: 1.5em;
+  color: $accent;
+  padding: 15px;
+}
+
 @mixin mat-table-columns($columns) {
   .mat-column- {
     @each $colName, $props in $columns {

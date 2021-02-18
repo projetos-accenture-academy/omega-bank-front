@@ -1,10 +1,12 @@
 import { Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { timer } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
 import { AccountStatement, DataInterval, StatementData } from '../account-statements.interface';
 import { AccountStatementsService } from '../account-statements.service';
@@ -34,8 +36,11 @@ export class StatementsListComponent implements OnInit {
 
   @Input() accountWithStatements!: AccountStatement;
   @Input() interval!: DataInterval;
+  @Input() accountType!: string;
 
-  constructor(public dialog: MatDialog, private statementsService: AccountStatementsService) {
+  constructor(public dialog: MatDialog,
+    private snackBar: MatSnackBar,
+    private auth: AuthService, private statementsService: AccountStatementsService) {
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource();
   }
@@ -44,7 +49,7 @@ export class StatementsListComponent implements OnInit {
     this.startDate = this.interval.start;
     this.endDate = this.interval.end;
 
-    this.statementData = this.accountWithStatements.statements;
+    this.statementData = this.accountWithStatements.transactions;
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.statementData);
@@ -83,24 +88,44 @@ export class StatementsListComponent implements OnInit {
       this.startDate = result.start;
       this.endDate = result.end;
 
-      this.getAccountStatements();
+      const initialDate = new Date(this.startDate!);
+      const finalDate = new Date(this.endDate!);
+
+
+
+      this.getAccountStatements(`${initialDate.getDate() > 9 ?
+        initialDate.getDate() : '0' + initialDate.getDate()}/${initialDate.getMonth() > 9 ?
+          initialDate.getMonth() : '0' + initialDate.getMonth()}/${initialDate.getFullYear()}`,
+        `${finalDate.getDate() > 9 ?
+          finalDate.getDate() : '0' + finalDate.getDate()}/${finalDate.getMonth() > 9 ?
+            finalDate.getMonth() : '0' + finalDate.getMonth()}/${finalDate.getFullYear()}`);
     });
   }
 
 
-  async getAccountStatements() {
+  async getAccountStatements(initialDate: string, endDate: string) {
     this.isLoadingResult = true;
 
+    const user = this.auth.getUserLogin();
+
     await timer(1000).pipe(take(1)).toPromise();
-    this.statementsService.getUserAccountStatements().subscribe(
+    this.statementsService.getUserAccountStatementsByAccount(initialDate, endDate, user, this.accountType).subscribe(
       result => {
         this.isLoadingResult = false
       },
       error => {
-        alert("Ocorreu um erro na requisição");
+        this.openSnackBar("Ops, ocorreu um erro e nçao foi possível obter o extrato do período escolhido", "Fechar");
         this.isLoadingResult = false
       }
     );
+  }
+
+
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 6000,
+    });
   }
 }
 

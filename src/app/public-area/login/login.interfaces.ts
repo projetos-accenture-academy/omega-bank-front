@@ -3,15 +3,15 @@ import { Usuario } from '../../shared/interfaces/usuario.interface';
 
 
 export interface LoginCredenciais {
-  usuario: string;
+  login: string;
   senha: string;
 }
 
 export interface LoginResponse {
-  conta: Conta,
-  contaCredito: Conta,
-  dataFim: Date;
-  dataInicio: Date;
+  accounts: Conta;
+  tokenExpeditionTime: Date;
+  tokenExpirationTime: Date;
   token: string;
-  usuario: Usuario;
+  login: string;
+  user: Usuario;
 }

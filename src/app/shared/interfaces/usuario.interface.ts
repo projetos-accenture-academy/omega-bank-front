@@ -3,7 +3,5 @@ export interface Usuario {
   id: number;
   login: string;
   nome: string;
-  redefinirSenha: boolean;
-  senha: string;
-  senhaTemporaria: string;
+  telefone: string;
 }

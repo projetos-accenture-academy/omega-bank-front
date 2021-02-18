@@ -9,58 +9,65 @@
 
     </div>
 
-   
+
 
     <div class="col-md-6 col-sm-4 col-xs-12 m-auto">
       <div class="card">
-        <div class="fluid text-center pt-5">
-          <p class="signup-text">Se inscreva no último banco da sua vida!</p>
+        <div class="fluid text-center pt-2">
+          <p class="signup-text">Inscreva-se no último banco da sua vida!</p>
         </div>
 
         <form class="p-4" #form="ngForm" (ngSubmit)="onSubmit(form)">
-          
+
           <div *ngIf="!usuarioCriado else usuarioCriadoBlock"></div>
-          
+
           <div class="form-group">
             <label for="nome" class="d-none d-sm-block">Nome completo:</label>
-            <input   [(ngModel)]="dadosCadastrais.nome"   [class.is-invalid]="exibeErro('nome', form)" #nome name="nome" type="text" class="form-control" id="nome" aria-describedby="nome"
+            <input [(ngModel)]="dadosCadastrais.nome" [class.is-invalid]="exibeErro('nome', form)" #nome name="nome"
+              type="text" class="form-control" id="nome" aria-describedby="nome"
               placeholder="Insira seu nome completo..." required>
           </div>
 
           <div class="form-group">
             <label for="cpf" class="d-none d-sm-block">CPF:</label>
             <input type="text" class="form-control" id="cpf" name="cpf" mask="000.000.000-00" aria-describedby="cpf"
-              placeholder="Insira o seu cpf..." required  [(ngModel)]="dadosCadastrais.cpf" name="cpf" [class.is-invalid]="exibeErro('cpf', form)" #cpf  >
+              placeholder="Insira o seu CPF..." required [(ngModel)]="dadosCadastrais.cpf" name="cpf"
+              [class.is-invalid]="exibeErro('cpf', form)" #cpf>
           </div>
 
 
           <div class="form-group">
             <label for="login" class="d-none d-sm-block">Login:</label>
             <input type="login" class="form-control" id="login" aria-describedby="login"
-              placeholder="Insira um login (username/apelido)" required  [(ngModel)]="dadosCadastrais.login" name="login" [class.is-invalid]="exibeErro('login', form)" #login   >
+              placeholder="Insira um login (username/apelido)" required [(ngModel)]="dadosCadastrais.login" name="login"
+              [class.is-invalid]="exibeErro('login', form)" #login>
           </div>
 
           <!--
           <div class="form-group">
             <label for="email" class="d-none d-sm-block">Endereço de Email:</label>
             <input type="email" class="form-control" id="email" aria-describedby="email"
-              placeholder="Digite aqui o seu email" required  [(ngModel)]="dadosCadastrais.email" name="email" [class.is-invalid]="exibeErro('email', form)" #email    >  
+              placeholder="Digite aqui o seu email" required  [(ngModel)]="dadosCadastrais.email" name="email" [class.is-invalid]="exibeErro('email', form)" #email    >
           </div>
         -->
           <div class="form-group">
             <label for="telefone" class="d-none d-sm-block">Telefone:</label>
             <input type="phone" class="form-control" id="telefone" aria-describedby="telefone"
-              placeholder="Telefone: DDD12345... (apenas números)" mask="00000000000" required   [(ngModel)]="dadosCadastrais.telefone" name="telefone" [class.is-invalid]="exibeErro('telefone', form)" #telefone    >
+              placeholder="(XX) X XXXX XXXX" mask="(00) 0 0000 0000" required [(ngModel)]="dadosCadastrais.telefone"
+              name="telefone" [class.is-invalid]="exibeErro('telefone', form)" #telefone>
           </div>
 
           <div class="form-group">
             <label for="senha" class="d-none d-sm-block">Senha:</label>
-            <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" required  [(ngModel)]="dadosCadastrais.senha" name="senha" [class.is-invalid]="exibeErro('senha', form)" #senha    >
+            <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" required
+              [(ngModel)]="dadosCadastrais.senha" name="senha" [class.is-invalid]="exibeErro('senha', form)" #senha>
           </div>
-          
-            <div class="form-group">
-            <label for="senha" class="d-none d-sm-block">Senha:</label>
-            <input type="password" class="form-control" id="senha1" placeholder="Repita a sua senha" required  name="senha1" [(ngModel)]="dadosCadastrais.senha1" name="senha1" [class.is-invalid]="exibeErro('senha1', form)" #senha1 >
+
+          <div class="form-group">
+            <label for="senha" class="d-none d-sm-block">Confirmação de enha:</label>
+            <input type="password" class="form-control" id="senha1" placeholder="Repita a sua senha" required
+              name="senha1" [(ngModel)]="dadosCadastrais.senha1" name="senha1"
+              [class.is-invalid]="exibeErro('senha1', form)" #senha1>
           </div>
           <p *ngIf="form.controls?.senha?.errors?.minlength"> Sua senha deve conter no mínimo 5 caracteres. </p>
           <p *ngIf="dadosCadastrais.senha != dadosCadastrais.senha1"> Confirme a sua senha nos dois campos de senha </p>
@@ -69,13 +76,14 @@
             {{ mensagemErro || 'Ops, algo deu errado!' }}
           </div>
           <div class="btn-container">
-            <button type="submit" id="btn-signup" class="btn btn-primary form-control" *ngIf="!estaCarregando; else spinner" ><b>Enviar cadastro</b></button>
+            <button type="submit" id="btn-signup" class="btn btn-primary form-control"
+              *ngIf="!estaCarregando; else spinner"><b>Enviar cadastro</b></button>
           </div>
 
 
-      <ng-template #spinner>
-        <div class="spinner-border mt-4" role="status"></div>
-      </ng-template> 
+          <ng-template #spinner>
+            <div class="spinner-border mt-4" role="status"></div>
+          </ng-template>
 
 
         </form>

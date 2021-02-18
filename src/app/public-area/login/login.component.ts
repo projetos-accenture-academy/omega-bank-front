@@ -1,8 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { LoginResponse } from './login.interfaces';
+import { LoginCredenciais } from './login.interfaces';
 import { LoginService } from './login.service';
 
 
@@ -16,36 +16,44 @@ import { LoginService } from './login.service';
 export class LoginComponent {
 
 
-  @ViewChild('username-input') usernameInput: ElementRef | undefined;
-  @ViewChild('password-input') pwInput: ElementRef | undefined;
+  @ViewChild('username') usernameInput: ElementRef | undefined;
+  @ViewChild('password') passwordInput: ElementRef | undefined;
 
-  username: string = '';
-  pw: string = '';
+  formUsuario = new FormGroup({
+    username: new FormControl('', [
+      Validators.required,
+    ]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(5),
+    ])
+  }
+
+  );
+
 
   isLoading: boolean = false;
   loginError: boolean = false;
-  loginErrorMessage: String = "Erro: Login ou senha incorretos";
+  loginErrorMessage: String | undefined;
 
   constructor(
     private loginService: LoginService,
     private router: Router
   ) { }
 
-  onLoginButtonSubmit(form: NgForm) {
-    this.router.navigate(['admin']);
-
+  onLoginButtonSubmit() {
     this.loginError = false;
 
-    if (!form.valid) {
-      form.controls.username.markAsTouched();
-      form.controls.pw.markAsTouched();
+    if (!this.formUsuario.valid) {
+      this.formUsuario.controls.username.markAsTouched();
+      this.formUsuario.controls.password.markAsTouched();
 
-      if (form.controls.username.invalid) {
+      if (this.formUsuario.controls.username.invalid) {
         this.usernameInput?.nativeElement.focus();
       }
 
-      if (form.controls.pw.invalid) {
-        this.pwInput?.nativeElement.focus();
+      if (this.formUsuario.controls.password.invalid) {
+        this.passwordInput?.nativeElement.focus();
       }
 
       return;
@@ -64,29 +72,29 @@ export class LoginComponent {
 
   login() {
     this.isLoading = true;
-    console.log("Entrou na 2 login");
 
-    const credenciais = {
-      usuario: this.username,
-      senha: this.pw
+    const credenciais: LoginCredenciais = {
+      login: this.formUsuario.value.username,
+      senha: this.formUsuario.value.password
     };
 
     this.loginService.logar(credenciais)
       .subscribe(
-        response => this.onSuccessLogin(response),
+        response => this.onSuccessLogin(),
         error => this.onErrorLogin(error)
       );
 
   }
 
 
-  onSuccessLogin(response: LoginResponse) {
+  onSuccessLogin() {
     this.router.navigate(['admin']);
   }
 
 
   onErrorLogin(error: any) {
-    console.log("Error logging in");
+    console.log("Error logging in", error);
+    this.loginErrorMessage = "Não foi possível realizar login." + error.message;
     this.loginError = true;
     this.isLoading = false;
   }
