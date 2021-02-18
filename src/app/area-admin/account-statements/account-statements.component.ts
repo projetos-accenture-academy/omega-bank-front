@@ -42,7 +42,7 @@ export class AccountStatementsComponent {
     const year = pipe.transform(now, 'yyyy');
     const today = pipe.transform(now, 'd');
 
-    this.getDataAPI(`01/${month}/${year}`, `${today}/${month}/${year}`, 'usuario01');
+    this.getDataAPI(`01/${month}/${year}`, `${today}/${month}/${year}`, this.auth.getUserLogin()!);
   }
 
   getDataAPI(iniDate: string, endDate: string, user: string) {
