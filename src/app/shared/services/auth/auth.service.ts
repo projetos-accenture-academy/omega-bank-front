@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginResponse } from 'src/app/public-area/login/login.interfaces';
 
 import { Usuario } from '../../interfaces/usuario.interface';
 
@@ -8,13 +9,14 @@ import { Usuario } from '../../interfaces/usuario.interface';
 })
 export class AuthService {
 
-  private usuario: Usuario | undefined;
+  private userLogin: Usuario | undefined;
   private token: string | undefined;
+  private userData: LoginResponse | undefined;
 
   constructor(private router: Router) { }
 
-  setUsuario(usuario: Usuario) {
-    this.usuario = usuario;
+  setUser(usuario: Usuario) {
+    this.userLogin = usuario;
     localStorage.setItem('usuario', JSON.stringify(usuario));
   }
 
@@ -23,15 +25,20 @@ export class AuthService {
     localStorage.setItem('token', token);
   }
 
-  getUsuario() {
-    if (this.usuario) {
-      return this.usuario;
+  setUserData(data: LoginResponse) {
+    this.userData = data;
+    localStorage.setItem('userData', JSON.stringify(data));
+  }
+
+  getUser() {
+    if (this.userLogin) {
+      return this.userLogin;
     }
 
-    const usuarioGuardado = localStorage.getItem('usuario');
+    const usuarioGuardado = localStorage.getItem('userData.user');
     if (usuarioGuardado) {
-      this.usuario = JSON.parse(usuarioGuardado);
-      return this.usuario;
+      this.userLogin = JSON.parse(usuarioGuardado);
+      return this.userLogin;
     }
 
     return undefined;
@@ -42,7 +49,7 @@ export class AuthService {
       return this.token;
     }
 
-    const tokenGuardado = localStorage.getItem('token');
+    const tokenGuardado = localStorage.getItem('userData.token');
     if (tokenGuardado) {
       this.token = tokenGuardado;
       return this.token;
@@ -52,14 +59,16 @@ export class AuthService {
   }
 
   logout() {
-    delete this.usuario;
+    delete this.userLogin;
     delete this.token;
+    delete this.userData;
     localStorage.clear();
+
     this.router.navigate(['login']);
   }
 
-  estaLogado() {
-    if (this.getUsuario() && this.getToken()) {
+  isLoggedIn() {
+    if (this.getUser() && this.getToken()) {
       return true;
     }
 

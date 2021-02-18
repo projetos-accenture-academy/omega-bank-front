@@ -29,12 +29,12 @@ export class LoginService {
   ) { }
 
   logar(credenciais: LoginCredenciais): Observable<LoginResponse> {
-    //return this.http.post<LoginResponse>(this.API_URL + '/login', credenciais)
-    return this.http.post<LoginResponse>("https://omegabank-backend.herokuapp.com/login", credenciais, this.httpOptions)
+    return this.http.post<LoginResponse>(this.API_URL + 'login', credenciais, this.httpOptions)
       .pipe(
         tap(response => {
-          this.authService.setUsuario(response.usuario);
+          this.authService.setUser(response.usuario);
           this.authService.setToken(response.token);
+          this.authService.setUserData(response);
         })
       );
   }
