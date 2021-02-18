@@ -9,8 +9,8 @@ export interface StatementData {
   id: number;
   date: string;
   description: string;
-  ammount: number;
-  type: string;
+  value: number;
+  transactionType: string;
   chartAccount: string;
 }
 
