@@ -11,16 +11,15 @@ import { SignupRequest } from './signup.interfaces';
 })
 
 
-  export class SignupService {
-  
-    API_URL = environment.API_URL;
-  
-    constructor(
-      private http: HttpClient,
-    ) { }
-  
-    criarUsuario(signupReq: SignupRequest): Observable<null> {
-      return this.http.post<any>(this.API_URL + '/user', signupReq);
-    }
+export class SignupService {
+
+  API_URL = environment.API_URL;
+
+  constructor(
+    private http: HttpClient,
+  ) { }
+
+  criarUsuario(signupReq: SignupRequest): Observable<null> {
+    return this.http.post<any>(this.API_URL + 'user', signupReq);
   }
-  
+}

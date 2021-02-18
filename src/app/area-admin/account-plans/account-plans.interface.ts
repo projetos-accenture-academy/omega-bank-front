@@ -7,4 +7,6 @@ export interface AccountPlanData {
 
 export interface AccountPlanNewData {
   description: string;
+  login: string | undefined;
+  type: number | undefined;
 }

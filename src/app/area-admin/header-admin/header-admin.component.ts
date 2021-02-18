@@ -15,7 +15,7 @@ export class HeaderAdminComponent implements OnInit {
   constructor(private router: Router, private auth: AuthService) { }
 
   ngOnInit(): void {
-    this.nameUser = this.auth.getUser()?.nome ?? "<VAZIO>";
+    this.nameUser = this.auth.getUser()?.login ?? "<VAZIO>";
   }
 
   doLogout() {

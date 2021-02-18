@@ -35,7 +35,7 @@ export class AuthService {
       return this.userLogin;
     }
 
-    const usuarioGuardado = localStorage.getItem('userData.user');
+    const usuarioGuardado = localStorage.getItem('userData');
     if (usuarioGuardado) {
       this.userLogin = JSON.parse(usuarioGuardado);
       return this.userLogin;
@@ -49,7 +49,7 @@ export class AuthService {
       return this.token;
     }
 
-    const tokenGuardado = localStorage.getItem('userData.token');
+    const tokenGuardado = localStorage.getItem('token');
     if (tokenGuardado) {
       this.token = tokenGuardado;
       return this.token;
